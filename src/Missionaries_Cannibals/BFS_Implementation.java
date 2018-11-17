@@ -27,23 +27,24 @@ public class BFS_Implementation {
         nodeQueue.addLast(initialNode);
 
         while (!nodeQueue.isEmpty()){
-            iteration++;
 
             Node u = nodeQueue.removeFirst();
             nodeMap.replace(u, true); //explored
+
+            iteration++;
 
             if(u.isGoal()){
 
                 System.out.println();
                 System.out.println("***BFS RESULT***");
-                System.out.println("Number of Explored Nodes = " + iteration);
-                System.out.println("Number of Expanded Nodes = " + nodeMap.size());
-                System.out.println("Time required = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
+                System.out.println("Number of Explored Nodes in BFS = " + iteration);
+                System.out.println("Number of Expanded Nodes in BFS = " + nodeMap.size());
+                System.out.println("Time required in BFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
 
-                System.out.println();
-                System.out.println("Printing path...");
-                u.printPath();
-                System.out.println();
+                //System.out.println();
+                //System.out.println("Printing path in BFS...");
+                //u.printPath();
+                //System.out.println();
                 return u;
             }
 
@@ -62,18 +63,22 @@ public class BFS_Implementation {
 
             ArrayList <Node> childNodes = u.generateChildNodes();
 
-            for (Node v: childNodes) {
+            for (int i = childNodes.size()-1; i>=0; i--) {
                 //System.out.println("Child" + v);
+                Node v = childNodes.get(i);
                 if (!nodeMap.containsKey(v)){
                     nodeMap.put(v, false);
                     nodeQueue.addLast(v);
                 }
+//                else {
+//                    System.out.println("HashMap already contains : " + v);
+//                }
             }
 
         }
 
         //no path found from initial node to goal node
-        System.out.println("Solution not found");
+        System.out.println("Solution not found in BFS");
         return null;
     }
 
