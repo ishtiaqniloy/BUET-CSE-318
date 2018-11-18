@@ -19,7 +19,7 @@ public class DFS_Implementation {
 
     public Node runDFS(){
 
-        Node initialNode = new Node(Main.m, Main.c, true, null);
+        Node initialNode = new Node(Main.m, Main.c, true, null, 0);
 
         nodeMap.put(initialNode, false);
         nodeStack.addFirst(initialNode);
@@ -34,8 +34,9 @@ public class DFS_Implementation {
 
                 System.out.println();
                 System.out.println("***DFS RESULT***");
-                System.out.println("Number of Explored Nodes in DFS = " + iteration);
-                System.out.println("Number of Expanded Nodes in DFS = " + nodeMap.size());
+                System.out.println("Number of Expanded Nodes in DFS = " + iteration);
+                System.out.println("Number of Explored Nodes in DFS = " + nodeMap.size());
+                System.out.println("Number of Steps required in DFS = " + u.distance);
                 System.out.println("Time required in DFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
 
 //                System.out.println();

@@ -7,15 +7,17 @@ public class Node {
     int left_m;
     int left_c;
     boolean boatInLeftSide;
+    int distance;
 
     Node parent;
 
-    public Node(int left_m, int left_c, boolean boatInLeftSide, Node p) {
+    public Node(int left_m, int left_c, boolean boatInLeftSide, Node par, int d) {
         this.left_m = left_m;
         this.left_c = left_c;
         this.boatInLeftSide = boatInLeftSide;
 
-        parent = p;
+        parent = par;
+        distance = d;
 
     }
 
@@ -94,13 +96,13 @@ public class Node {
                 Node newNode = null;
 
                 if(boatInLeftSide){ //carry passengers to right side
-                    newNode = new Node(left_m-j, left_c - (i-j), !boatInLeftSide, this);
+                    newNode = new Node(left_m-j, left_c - (i-j), !boatInLeftSide, this, distance+1);
                     if(newNode.isValid()){
                         children.add(newNode);
                     }
                 }
                 else{ //carry passengers to left side
-                    newNode = new Node(left_m + j, left_c + (i-j), !boatInLeftSide, this);
+                    newNode = new Node(left_m + j, left_c + (i-j), !boatInLeftSide, this, distance+1);
                     if(newNode.isValid()){
                         children.add(newNode);
                     }

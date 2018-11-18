@@ -21,7 +21,7 @@ public class BFS_Implementation {
 
     public Node runBFS(){
 
-        Node initialNode = new Node(Main.m, Main.c, true, null);
+        Node initialNode = new Node(Main.m, Main.c, true, null, 0);
 
         nodeMap.put(initialNode, false);
         nodeQueue.addLast(initialNode);
@@ -37,8 +37,9 @@ public class BFS_Implementation {
 
                 System.out.println();
                 System.out.println("***BFS RESULT***");
-                System.out.println("Number of Explored Nodes in BFS = " + iteration);
-                System.out.println("Number of Expanded Nodes in BFS = " + nodeMap.size());
+                System.out.println("Number of  Nodes Expanded in BFS = " + iteration);
+                System.out.println("Number of Explored Nodes in BFS = " + nodeMap.size());
+                System.out.println("Number of Steps required in BFS = " + u.distance);
                 System.out.println("Time required in BFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
 
                 //System.out.println();
