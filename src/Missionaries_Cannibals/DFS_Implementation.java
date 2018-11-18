@@ -30,21 +30,7 @@ public class DFS_Implementation {
             Node u = nodeStack.removeFirst();
             nodeMap.replace(u, true); //explored
 
-            if(u.isGoal()){
 
-                System.out.println();
-                System.out.println("***DFS RESULT***");
-                System.out.println("Number of Expanded Nodes in DFS = " + iteration);
-                System.out.println("Number of Explored Nodes in DFS = " + nodeMap.size());
-                System.out.println("Number of Steps required in DFS = " + u.distance);
-                System.out.println("Time required in DFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
-
-//                System.out.println();
-//                System.out.println("Printing path in DFS...");
-//                u.printPath();
-//                System.out.println();
-                return u;
-            }
 
             //checking maximum iteration constraint
             if(iteration > Main.MAX_ITERATIONS){
@@ -62,6 +48,23 @@ public class DFS_Implementation {
             ArrayList <Node> childNodes = u.generateChildNodes();
 
             for (Node v: childNodes) {
+
+                if(v.isGoal()){
+
+                    System.out.println();
+                    System.out.println("***DFS RESULT***");
+                    System.out.println("Number of Expanded Nodes in DFS = " + iteration);
+                    System.out.println("Number of Explored Nodes in DFS = " + nodeMap.size());
+                    System.out.println("Number of Steps required in DFS = " + v.distance);
+                    System.out.println("Time required in DFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
+
+//                System.out.println();
+//                System.out.println("Printing path in DFS...");
+//                u.printPath();
+//                System.out.println();
+                    return u;
+                }
+
                 //System.out.println("Child" + v);
                 if (!nodeMap.containsKey(v)){
                     nodeMap.put(v, false);

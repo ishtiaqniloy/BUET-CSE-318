@@ -33,22 +33,6 @@ public class BFS_Implementation {
 
             iteration++;
 
-            if(u.isGoal()){
-
-                System.out.println();
-                System.out.println("***BFS RESULT***");
-                System.out.println("Number of  Nodes Expanded in BFS = " + iteration);
-                System.out.println("Number of Explored Nodes in BFS = " + nodeMap.size());
-                System.out.println("Number of Steps required in BFS = " + u.distance);
-                System.out.println("Time required in BFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
-
-                //System.out.println();
-                //System.out.println("Printing path in BFS...");
-                //u.printPath();
-                //System.out.println();
-                return u;
-            }
-
             //checking maximum iteration constraint
             if(iteration > Main.MAX_ITERATIONS){
                 System.out.println("Maximum iterations reached in BFS. Terminating...");
@@ -67,6 +51,23 @@ public class BFS_Implementation {
             for (int i = childNodes.size()-1; i>=0; i--) {
                 //System.out.println("Child" + v);
                 Node v = childNodes.get(i);
+
+                if(v.isGoal()){
+
+                    System.out.println();
+                    System.out.println("***BFS RESULT***");
+                    System.out.println("Number of  Nodes Expanded in BFS = " + iteration);
+                    System.out.println("Number of Explored Nodes in BFS = " + nodeMap.size());
+                    System.out.println("Number of Steps required in BFS = " + v.distance);
+                    System.out.println("Time required in BFS = " + ( ( System.currentTimeMillis() - MAX_TIME + Main.TIMEOUT_SECONDS*1000 ) ) + " ms");
+
+                    //System.out.println();
+                    //System.out.println("Printing path in BFS...");
+                    //u.printPath();
+                    //System.out.println();
+                    return u;
+                }
+
                 if (!nodeMap.containsKey(v)){
                     nodeMap.put(v, false);
                     nodeQueue.addLast(v);
