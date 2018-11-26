@@ -9,20 +9,40 @@ public class SupportingFunctions {
         return true;
     }
 
-    public static int[][] swap(int array[][], int i1, int j1, int i2, int j2){
-        int temp = array[i1][j1];
-        array[i1][j1] = array[i2][j2];
-        array[i2][j2] = temp;
+    public static int[][] copyArray(int array[][]){
+        int tempArr[][] = new int[Main.k][Main.k];
 
-        return array;
+        for(int i=0; i<Main.k; i++){
+            for (int j=0; j<Main.k; j++) {
+                tempArr[i][j] = array[i][j];
+            }
+        }
+
+        return tempArr;
+    }
+
+    public static int[][] swap(int array[][], int i1, int j1, int i2, int j2){
+
+        //System.out.println(i1 + " " + j1 + " " +j1 + " " +j2);
+
+        int tempArr[][] = copyArray(array);
+
+        tempArr[i1][j1] = array[i2][j2];
+        tempArr[i2][j2] = array[i1][j1];
+
+        return tempArr;
     }
 
     public static int[][] swap(int array[][], Pair<Integer, Integer> pos1, Pair<Integer, Integer> pos2){
-        int temp = array[pos1.getKey()][pos1.getValue()];
-        array[pos1.getKey()][pos1.getValue()] = array[pos2.getKey()][pos2.getValue()];
-        array[pos2.getKey()][pos2.getValue()] = temp;
 
-        return array.clone();
+        //System.out.println(pos1.getKey() + " " + pos1.getValue() + " " +pos2.getKey() + " " +pos2.getValue());
+
+        int tempArr[][] = copyArray(array);
+
+        tempArr[pos1.getKey()][pos1.getValue()] = array[pos2.getKey()][pos2.getValue()];
+        tempArr[pos2.getKey()][pos2.getValue()] = array[pos1.getKey()][pos1.getValue()];
+
+        return tempArr;
     }
 
     public static int getCorrectValue(Pair<Integer, Integer> pos){

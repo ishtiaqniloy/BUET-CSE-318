@@ -39,7 +39,7 @@ public class Main {
             //taking array input
             for(int i=0; i<k; i++){
                 String str = scanner.nextLine();
-                System.out.println(str);
+                //System.out.println(str);
                 int j=0;
                 for (j=0; j<k && 2*j < str.length(); j++){
                     if(str.charAt(2*j)==' '){
@@ -57,19 +57,30 @@ public class Main {
 
             }
             Node initialNode = new Node(array, 0, SupportingFunctions.getHammingDistance(array), "Initial Node", null, sp);
+            initialNode.printNode();
+
+//            array = SupportingFunctions.swap(array, new Pair<Integer, Integer>(0,0), new Pair<Integer, Integer>(2,2));
+//            initialNode = new Node(array, 0, SupportingFunctions.getHammingDistance(array), "Initial Node", null, sp);
+//            initialNode.printNode();
 
             //System.out.println(sp.getKey() + " " + sp.getValue());
 
-            for (Node node: initialNode.getChildren()) {
-                node.printNode();
-            }
+//            for (Node node: initialNode.getChildren()) {
+//                node.printNode();
+//            }
 
             solution = new HamDist(initialNode);
             Node resultHam = solution.solve();
 
-            //printing array
-            System.out.println("Printing array");
-            resultHam.printNode();
+            if(resultHam==null){
+                System.out.println("Unexpectedly solution not found with Hamming Distance");
+            }
+            else {
+                System.out.println("Printing solution steps with Hamming Distance: ");
+                resultHam.printSteps();
+
+            }
+
 
 
 
