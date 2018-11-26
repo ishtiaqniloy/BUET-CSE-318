@@ -1,8 +1,13 @@
 package N_Puzzle;
 
+import javafx.util.Pair;
 import org.omg.CORBA.MARSHAL;
 
 public class SupportingFunctions {
+
+    public static boolean isSolvable(int array[][]){
+        return true;
+    }
 
     public static int[][] swap(int array[][], int i1, int j1, int i2, int j2){
         int temp = array[i1][j1];
@@ -12,12 +17,20 @@ public class SupportingFunctions {
         return array;
     }
 
-    public static int getCorrectValue(int i, int j){
-        if(i==Main.k-1 && j==Main.k-1 ){
+    public static int[][] swap(int array[][], Pair<Integer, Integer> pos1, Pair<Integer, Integer> pos2){
+        int temp = array[pos1.getKey()][pos1.getValue()];
+        array[pos1.getKey()][pos1.getValue()] = array[pos2.getKey()][pos2.getValue()];
+        array[pos2.getKey()][pos2.getValue()] = temp;
+
+        return array.clone();
+    }
+
+    public static int getCorrectValue(Pair<Integer, Integer> pos){
+        if(pos.getKey()==Main.k-1 && pos.getValue()==Main.k-1 ){
             return Main.SPACE;
         }
         else{
-            return Main.k*i+j+1;
+            return Main.k*pos.getKey()+pos.getValue()+1;
         }
     }
 
@@ -29,7 +42,7 @@ public class SupportingFunctions {
                 if(i==Main.k-1 && j==Main.k-1){
                     continue;
                 }
-                else if(array[i][j]!=getCorrectValue(i,j)){
+                else if(array[i][j]!=getCorrectValue(new Pair<Integer, Integer>(i,j))){
                     dist++;
                 }
             }
