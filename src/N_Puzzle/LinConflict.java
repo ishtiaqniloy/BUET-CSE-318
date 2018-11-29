@@ -1,5 +1,7 @@
 package N_Puzzle;
 
+import javafx.util.Pair;
+
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -11,14 +13,17 @@ public class LinConflict implements Solution {
 
     private PriorityQueue <Node> queue;
 
-    LinConflict(Node init){
-        initialNode = init;
+    private long startTime;
+
+    LinConflict(int array[][], Pair<Integer, Integer>sp){
+        initialNode = new Node(array, 0, SupportingFunctions.getLinearConflicts(array), "Initial Node", null, sp);
 
         expandedNodes = new  HashMap <Node, Integer>();
         exploredNodes = new  HashMap <Node, Integer>();
 
         queue = new PriorityQueue<Node>(20, new NodeComparator());
 
+        startTime = System.currentTimeMillis();
 
     }
 
@@ -40,6 +45,7 @@ public class LinConflict implements Solution {
                 System.out.println("***RESULT OF LINEAR CONFLICTS***");
                 System.out.println("Number of Expanded Nodes = " + expandedNodes.size());
                 System.out.println("Number of Explored Nodes = " + exploredNodes.size());
+                System.out.println("Time required = " + (System.currentTimeMillis()-startTime) + " ms");
 
                 return node;
             }

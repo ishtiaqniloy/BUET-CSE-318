@@ -1,5 +1,7 @@
 package N_Puzzle;
 
+import javafx.util.Pair;
+
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -11,14 +13,17 @@ public class ManDist implements Solution {
 
     private PriorityQueue <Node> queue;
 
-    ManDist(Node init){
-        initialNode = init;
+    private long startTime;
+
+    ManDist(int array[][], Pair<Integer, Integer> sp){
+        initialNode = new Node(array, 0, SupportingFunctions.getManhattanDistance(array), "Initial Node", null, sp);
 
         expandedNodes = new  HashMap <Node, Integer>();
         exploredNodes = new  HashMap <Node, Integer>();
 
         queue = new PriorityQueue<Node>(20, new NodeComparator());
 
+        startTime = System.currentTimeMillis();
 
     }
 
@@ -40,6 +45,7 @@ public class ManDist implements Solution {
                 System.out.println("***RESULT OF MANHATTAN DISTANCE***");
                 System.out.println("Number of Expanded Nodes = " + expandedNodes.size());
                 System.out.println("Number of Explored Nodes = " + exploredNodes.size());
+                System.out.println("Time required = " + (System.currentTimeMillis()-startTime) + " ms");
 
                 return node;
             }

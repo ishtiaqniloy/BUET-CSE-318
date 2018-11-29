@@ -1,7 +1,6 @@
 package N_Puzzle;
 
 import javafx.util.Pair;
-import org.omg.CORBA.MARSHAL;
 
 import java.util.ArrayList;
 
@@ -40,7 +39,7 @@ public class SupportingFunctions {
     }
 
 
-    public static boolean isSolvable(int array[][]){    //not done
+    public static boolean isSolvable(int array[][]){
 
         Pair<Integer, Integer> inv = getNumberInverse(array);
 
@@ -159,8 +158,17 @@ public class SupportingFunctions {
                 if(array[i][j]==Main.SPACE){
                     continue;
                 }
+                Pair <Integer, Integer> pos1 = getCorrectPosition(array[i][j]);
+                if (pos1.getKey()!=i){
+                    continue;
+                }
+
                 for (int k=j+1; k<Main.k; k++) {
                     if(array[i][k]==Main.SPACE){
+                        continue;
+                    }
+                    Pair <Integer, Integer> pos2 = getCorrectPosition(array[i][k]);
+                    if (pos2.getKey()!=i){
                         continue;
                     }
                     else if(array[i][j] > array[i][k]){
@@ -176,8 +184,16 @@ public class SupportingFunctions {
                 if(array[i][j]==Main.SPACE){
                     continue;
                 }
+                Pair <Integer, Integer> pos1 = getCorrectPosition(array[i][j]);
+                if (pos1.getValue()!=j){
+                    continue;
+                }
                 for (int k=i+1; k<Main.k; k++) {
                     if(array[k][j]==Main.SPACE){
+                        continue;
+                    }
+                    Pair <Integer, Integer> pos2 = getCorrectPosition(array[k][j]);
+                    if (pos2.getValue()!=j){
                         continue;
                     }
                     else if(array[i][j] > array[k][j]){

@@ -4,7 +4,6 @@ import javafx.util.Pair;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -34,40 +33,63 @@ public class Main {
             scanner.nextLine();
 
             array = new int[k][k];
-            Pair<Integer, Integer> sp = new Pair<Integer, Integer>(-1,-1);
+
+            for(int i=0; i<k; i++){
+                for (int j=0; j<k; j++) {
+                    array[i][j] = 0;
+                }
+            }
+
+            Pair<Integer, Integer> sp = new Pair<Integer, Integer>(-1, -1);
 
             //taking array input
             for(int i=0; i<k; i++){
                 String str = scanner.nextLine();
-                //System.out.println(str);
-                int j=0;
-                for (j=0; j<k && 2*j < str.length(); j++){
-                    if(str.charAt(2*j)==' '){
-                        array[i][j] = SPACE;
-                        sp = new Pair<Integer, Integer>(i,j);
-                    }
-                    else {
-                        array[i][j] = str.charAt(2*j)-'0';
+                String []nums = str.split(" ");
+
+                //System.out.println(nums.length);
+
+                if(nums.length==k){
+                    for (int j=0; j<k; j++){
+                        array[i][j] = Integer.parseInt(nums[j]);
                     }
                 }
-                if(j!=k){
+                else if(nums.length<k){
+
+                    for (int j=0; j<nums.length; j++){
+                        array[i][j] = Integer.parseInt(nums[j]);
+                    }
                     array[i][k-1] = SPACE;
-                    sp = new Pair<Integer, Integer>(i,k-1);
+                    sp = new Pair<Integer, Integer>(i, k-1);
+                }
+                else{
+                    int x =0;
+                    for (int j=0; j<nums.length; j++){
+                        if(nums[j].length()==0){
+                            array[i][x] = SPACE;
+                            sp = new Pair<Integer, Integer>(i, x);
+                            x++;
+                            j++;
+                            continue;
+                        }
+                        array[i][x] = Integer.parseInt(nums[j]);
+                        x++;
+                    }
                 }
 
             }
+
+
 
             if(!SupportingFunctions.isSolvable(array)){     //checking whether solvable or not
                 System.out.println("Input is not solvable. Exiting...");
                 return;
             }
 
+            System.out.println();
 
 
-            Node initialNode = new Node(array, 0, SupportingFunctions.getHammingDistance(array), "Initial Node", null, sp);
-            initialNode.printNode();
-
-            solution = new HamDist(initialNode);
+            solution = new HamDist(array, sp);
             Node resultHam = solution.solve();
 
             if(resultHam==null){
@@ -80,8 +102,8 @@ public class Main {
 
 
 
-            initialNode = new Node(array, 0, SupportingFunctions.getManhattanDistance(array), "Initial Node", null, sp);
-            solution = new ManDist(initialNode);
+
+            solution = new ManDist(array, sp);
             Node resultMan = solution.solve();
 
             if(resultMan==null){
@@ -94,8 +116,8 @@ public class Main {
 
 
 
-            initialNode = new Node(array, 0, SupportingFunctions.getLinearConflicts(array), "Initial Node", null, sp);
-            solution = new LinConflict(initialNode);
+
+            solution = new LinConflict(array, sp);
             Node resultLin = solution.solve();
 
             if(resultLin==null){

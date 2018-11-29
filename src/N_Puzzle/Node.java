@@ -279,7 +279,7 @@ public class Node {
 
     public void printNode(){
         System.out.println(msg);
-        System.out.println("dist = " + dist + ", heuristicVal = "  + heuristicVal);
+        System.out.println("dist = "+dist+", heuristicVal = "+heuristicVal+", Space position = (" + spacePosition.getKey()+","+spacePosition.getValue()+")" );
 
         //System.out.println(node.getSpacePosition().getKey() + " " + node.getSpacePosition().getValue());
         for(int i=0; i<Main.k; i++){
