@@ -56,18 +56,16 @@ public class Main {
                 }
 
             }
+
+            if(!SupportingFunctions.isSolvable(array)){     //checking whether solvable or not
+                System.out.println("Input is not solvable. Exiting...");
+                return;
+            }
+
+
+
             Node initialNode = new Node(array, 0, SupportingFunctions.getHammingDistance(array), "Initial Node", null, sp);
             initialNode.printNode();
-
-//            array = SupportingFunctions.swap(array, new Pair<Integer, Integer>(0,0), new Pair<Integer, Integer>(2,2));
-//            initialNode = new Node(array, 0, SupportingFunctions.getHammingDistance(array), "Initial Node", null, sp);
-//            initialNode.printNode();
-
-            //System.out.println(sp.getKey() + " " + sp.getValue());
-
-//            for (Node node: initialNode.getChildren()) {
-//                node.printNode();
-//            }
 
             solution = new HamDist(initialNode);
             Node resultHam = solution.solve();
@@ -78,10 +76,35 @@ public class Main {
             else {
                 System.out.println("Printing solution steps with Hamming Distance: ");
                 resultHam.printSteps();
-
             }
 
 
+
+            initialNode = new Node(array, 0, SupportingFunctions.getManhattanDistance(array), "Initial Node", null, sp);
+            solution = new ManDist(initialNode);
+            Node resultMan = solution.solve();
+
+            if(resultMan==null){
+                System.out.println("Unexpectedly solution not found with Manhattan Distance");
+            }
+            else {
+                System.out.println("Printing solution steps with Manhattan Distance: ");
+                resultMan.printSteps();
+            }
+
+
+
+            initialNode = new Node(array, 0, SupportingFunctions.getLinearConflicts(array), "Initial Node", null, sp);
+            solution = new LinConflict(initialNode);
+            Node resultLin = solution.solve();
+
+            if(resultLin==null){
+                System.out.println("Unexpectedly solution not found with Linear Conflicts");
+            }
+            else {
+                System.out.println("Printing solution steps with Linear Conflicts: ");
+                resultLin.printSteps();
+            }
 
 
 

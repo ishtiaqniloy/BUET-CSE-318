@@ -106,7 +106,7 @@ public class Node {
         int hash = 0;
         for(int i=0; i<Main.k; i++){
             for (int j=0; j<Main.k; j++) {
-                hash+= Objects.hash(array[i][j]);
+                hash+= (i+1)*(j+1)*Objects.hash(array[i][j]);
             }
         }
 
@@ -115,7 +115,7 @@ public class Node {
         //return Arrays.hashCode(array);
     }
 
-    ArrayList <Node> getChildren(){
+    ArrayList <Node> getChildrenHamming(){
         ArrayList <Node> children = new ArrayList<Node>();
 
         int i = spacePosition.getKey();
@@ -165,6 +165,113 @@ public class Node {
 
 
 
+
+
+        return children;
+    }
+
+    ArrayList <Node> getChildrenManhattan(){
+
+        ArrayList <Node> children = new ArrayList<Node>();
+
+        int i = spacePosition.getKey();
+        int j = spacePosition.getValue();
+
+        //1st case: sth down
+        if(i>0){
+            int val = array[i-1][j];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i-1,j));
+            //int childArr[][] = SupportingFunctions.swap(array, i,j, i-1,j);
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getManhattanDistance(childArr), val + " DOWN", this, new Pair<Integer, Integer>(i-1,j));
+            //child.printNode();
+            children.add(child);
+        }
+
+        //2nd case: sth up
+        if(i<Main.k-1){
+            int val = array[i+1][j];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i+1,j));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getManhattanDistance(childArr), val + " UP", this, new Pair<Integer, Integer>(i+1,j));
+            //child.printNode();
+            children.add(child);
+        }
+
+        //3rd case: sth right
+        if(j>0){
+            int val = array[i][j-1];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i,j-1));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getManhattanDistance(childArr), val + " RIGHT", this, new Pair<Integer, Integer>(i,j-1));
+            //child.printNode();
+            children.add(child);
+        }
+
+        //4t case: sth left
+        if(j<Main.k-1){
+            int val = array[i][j+1];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i,j+1));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getManhattanDistance(childArr), val + " LEFT", this, new Pair<Integer, Integer>(i,j+1));
+            //child.printNode();
+            children.add(child);
+        }
+
+
+
+
+
+
+        return children;
+    }
+
+    ArrayList <Node> getChildrenLinear(){
+        ArrayList <Node> children = new ArrayList<Node>();
+
+        int i = spacePosition.getKey();
+        int j = spacePosition.getValue();
+
+        //1st case: sth down
+        if(i>0){
+            int val = array[i-1][j];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i-1,j));
+            //int childArr[][] = SupportingFunctions.swap(array, i,j, i-1,j);
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getLinearConflicts(childArr), val + " DOWN", this, new Pair<Integer, Integer>(i-1,j));
+
+            children.add(child);
+        }
+
+        //2nd case: sth up
+        if(i<Main.k-1){
+            int val = array[i+1][j];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i+1,j));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getLinearConflicts(childArr), val + " UP", this, new Pair<Integer, Integer>(i+1,j));
+
+            children.add(child);
+        }
+
+        //3rd case: sth right
+        if(j>0){
+            int val = array[i][j-1];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i,j-1));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getLinearConflicts(childArr), val + " RIGHT", this, new Pair<Integer, Integer>(i,j-1));
+
+            children.add(child);
+        }
+
+        //4t case: sth left
+        if(j<Main.k-1){
+            int val = array[i][j+1];
+            int childArr[][] = SupportingFunctions.swap(array, new Pair<Integer, Integer>(i,j), new Pair<Integer, Integer>(i,j+1));
+
+            Node child = new Node(childArr, dist+1, SupportingFunctions.getLinearConflicts(childArr), val + " LEFT", this, new Pair<Integer, Integer>(i,j+1));
+
+            children.add(child);
+        }
 
 
         return children;

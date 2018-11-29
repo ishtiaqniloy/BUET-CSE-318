@@ -1,16 +1,15 @@
 package N_Puzzle;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class HamDist implements Solution {
-    Node initialNode;
+    private Node initialNode;
 
-    HashMap<Node, Integer> expandedNodes;   //closedList
-    HashMap <Node, Integer> exploredNodes;   //helps to update faster
+    private HashMap<Node, Integer> expandedNodes;   //closedList
+    private HashMap <Node, Integer> exploredNodes;   //helps to update faster
 
-    PriorityQueue <Node> queue;
+    private PriorityQueue <Node> queue;
 
     HamDist(Node init){
         initialNode = init;
@@ -46,8 +45,7 @@ public class HamDist implements Solution {
             }
 
 
-            for (Node child : node.getChildren()) {
-
+            for (Node child : node.getChildrenHamming()) {
                 if (expandedNodes.containsKey(child)){
                     continue;
                 }
@@ -58,7 +56,6 @@ public class HamDist implements Solution {
                         queue.remove(child);
                         queue.add(child);
                     }
-
                 }
                 else{
                     exploredNodes.put(child, child.getEffectiveVal());
@@ -67,14 +64,7 @@ public class HamDist implements Solution {
 
             }
 
-
         }
-
-
-
-
-
-
 
         return null;
 
