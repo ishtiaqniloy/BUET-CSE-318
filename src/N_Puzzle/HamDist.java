@@ -39,6 +39,10 @@ public class HamDist implements Solution {
             Node node = queue.poll();
             expandedNodes.put(node, node.getEffectiveVal());
 
+//            if(expandedNodes.size()%1000==0){
+//                System.out.println(expandedNodes.size() + "  " + exploredNodes.size() + " " + queue.size());
+//            }
+
             //node.printNode();
 
             if(node.isGoal()){

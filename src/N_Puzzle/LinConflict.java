@@ -34,10 +34,16 @@ public class LinConflict implements Solution {
         queue.add(initialNode);
         exploredNodes.put(initialNode, initialNode.getEffectiveVal());
 
+
+
         while (!queue.isEmpty()){
 
             Node node = queue.poll();
             expandedNodes.put(node, node.getEffectiveVal());
+
+//            if(expandedNodes.size()%1000==0){
+//                System.out.println(expandedNodes.size() + "  " + exploredNodes.size() + " " + queue.size());
+//            }
 
             //node.printNode();
 
