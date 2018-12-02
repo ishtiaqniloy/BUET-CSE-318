@@ -9,8 +9,7 @@ import java.util.Scanner;
 public class Main {
 
     public static int k;
-    public static int n;
-    public static final int SPACE = -1;
+    public static final int SPACE = 0;
 
     public static int array[][];
 
