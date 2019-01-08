@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public abstract class Solution {
     ArrayList<Integer> tourCityIdx;
-    double duration;
+    double constructionDuration;
+    double optimizationDuration;
     double totalDistanceTravelled;
     int numberOfRoadsTravelled;
 
     Solution(){
         tourCityIdx = new ArrayList<Integer>();
-        duration = 0;
+        constructionDuration = 0;
+        optimizationDuration = 0;
         totalDistanceTravelled = 0;
         numberOfRoadsTravelled = 0;
     }
@@ -23,12 +25,20 @@ public abstract class Solution {
         this.tourCityIdx = tourCityIdx;
     }
 
-    public double getDuration() {
-        return duration;
+    public double getConstructionDuration() {
+        return constructionDuration;
     }
 
-    public void setDuration(double duration) {
-        this.duration = duration;
+    public void setConstructionDuration(double constructionDuration) {
+        this.constructionDuration = constructionDuration;
+    }
+
+    public double getOptimizationDuration() {
+        return optimizationDuration;
+    }
+
+    public void setOptimizationDuration(double optimizationDuration) {
+        this.optimizationDuration = optimizationDuration;
     }
 
     public double getTotalDistanceTravelled() {
@@ -50,5 +60,7 @@ public abstract class Solution {
     abstract void construct();
 
     abstract void improve();
+
+    abstract void printSolution();
 
 }
