@@ -6,9 +6,14 @@ import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    public static final int MAX_ITR = 3;
+    public static final int MAX_CANDIDATES = 3;
+    public static final Random rand = new Random();
+
     public static int n;
 
     public static void main(String []args){
@@ -26,11 +31,11 @@ public class Main {
 
             Scanner scanner = new Scanner(new FileInputStream(input));
 
+            System.out.println("Taking Inputs...");
+
 //            while(scanner.hasNextLine()){
 //                System.out.println(scanner.nextLine());
 //            }
-
-            System.out.println("Taking Inputs...");
 
             n = scanner.nextInt();
             System.out.println(n + " cities in the problem.\nLocations are:");
@@ -60,7 +65,11 @@ public class Main {
                 }
             }
 
+            ArrayList<Solution> nnSolutions = new ArrayList<Solution>();
 
+            for (int i = 0; i < MAX_ITR; i++) {
+
+            }
 
 
 

@@ -47,7 +47,7 @@ public abstract class Solution {
         this.numberOfRoadsTravelled = numberOfRoadsTravelled;
     }
 
-    abstract void solve();
+    abstract void construct();
 
     abstract void improve();
 
