@@ -18,7 +18,6 @@ public class Main {
     public static float [][] distanceArray;
 
 
-
     public static void main(String []args){
         System.out.println("Travelling Salesman Problem");
 
@@ -35,7 +34,7 @@ public class Main {
             Scanner scanner = new Scanner(new FileInputStream(input));
 
             //=============================================================
-            //Input Processing
+            //Input
             //=============================================================
 
             System.out.println("Taking Inputs...");
@@ -62,18 +61,26 @@ public class Main {
 
             scanner.close();
 
-            System.out.println("Calculating Distances...");
 
-            distanceArray = new float[n][n];
-            for (int i = 0; i < n; i++) {
-                double x1 = locations.get(i).getKey();
-                double y1 = locations.get(i).getValue();
-                for (int j = 0; j < n; j++) {
-                    double x2 = locations.get(j).getKey();
-                    double y2 = locations.get(j).getValue();
-                    distanceArray[i][j] = (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
-                }
-            }
+            //=============================================================
+            //Input Processing
+            //=============================================================
+
+//            System.out.println("Calculating Distances...");
+//            long st = System.currentTimeMillis();
+//            distanceArray = new float[n][n];
+//            for (int i = 0; i < n; i++) {
+//                float x1 = locations.get(i).getKey();
+//                float y1 = locations.get(i).getValue();
+//                for (int j = 0; j < n; j++) {
+//                    float x2 = locations.get(j).getKey();
+//                    float y2 = locations.get(j).getValue();
+//                    distanceArray[i][j] = (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+//                }
+//            }
+//            System.out.println("Distance Calculation required " + (System.currentTimeMillis()-st) + "ms");
+//            System.out.println();
+
 
             //=============================================================
             //Nearest Neighbor Construction
@@ -84,7 +91,8 @@ public class Main {
             ArrayList<Solution> nnSolutions = new ArrayList<Solution>();
 
             for (int i = 0; i < MAX_ITR; i++) {
-                Solution s = new NearestNeighborSolution();
+                System.out.println("Running " + (i+1) + "th iteration...");
+                Solution s = new NearestNeighborSolution2();
                 nnSolutions.add(s);
                 s.construct();
             }
@@ -105,11 +113,12 @@ public class Main {
                     minIdx = i;
                 }
 
-                System.out.println("Printing " + i +"th solution...");
+                System.out.println("Printing " + (i+1) +"th solution...");
                 s.printSolution();
 
             }
 
+            System.out.println("***FINAL RESULTS***");
             System.out.println("Average Time required for construction in Nearest Neighbor Heuristic = " + avgDuration + "ms");
             System.out.println("Average Distance Travelled in Nearest Neighbor Heuristic = " + avgDist);
             System.out.println();
