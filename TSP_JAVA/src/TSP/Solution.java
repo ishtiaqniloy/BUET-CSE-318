@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Solution {
     ArrayList<Integer> tourCityIdx;
-    double constructionDuration;
-    double optimizationDuration;
+    long constructionDuration;
+    long optimizationDuration;
     double totalDistanceTravelled;
-    int numberOfRoadsTravelled;
+    long numberOfRoadsTravelled;
 
     Solution(){
         tourCityIdx = new ArrayList<Integer>();
@@ -29,15 +29,15 @@ public abstract class Solution {
         return constructionDuration;
     }
 
-    public void setConstructionDuration(double constructionDuration) {
+    public void setConstructionDuration(long constructionDuration) {
         this.constructionDuration = constructionDuration;
     }
 
-    public double getOptimizationDuration() {
+    public long getOptimizationDuration() {
         return optimizationDuration;
     }
 
-    public void setOptimizationDuration(double optimizationDuration) {
+    public void setOptimizationDuration(long optimizationDuration) {
         this.optimizationDuration = optimizationDuration;
     }
 
@@ -49,11 +49,11 @@ public abstract class Solution {
         this.totalDistanceTravelled = totalDistanceTravelled;
     }
 
-    public int getNumberOfRoadsTravelled() {
+    public long getNumberOfRoadsTravelled() {
         return numberOfRoadsTravelled;
     }
 
-    public void setNumberOfRoadsTravelled(int numberOfRoadsTravelled) {
+    public void setNumberOfRoadsTravelled(long numberOfRoadsTravelled) {
         this.numberOfRoadsTravelled = numberOfRoadsTravelled;
     }
 

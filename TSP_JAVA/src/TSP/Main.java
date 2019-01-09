@@ -1,8 +1,6 @@
 package TSP;
 
 import javafx.util.Pair;
-
-import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -12,11 +10,13 @@ import java.util.Scanner;
 public class Main {
     public static final boolean RANDOMIZED_START = true;
     public static final int MAX_ITR = 10;
-    public static final int MAX_CANDIDATES = 3;
+    public static final int MAX_CANDIDATES = 5;
     public static final Random rand = new Random();
 
     public static int n;
-    public static double [][] distanceArray;
+    public static ArrayList<Pair<Float, Float>> locations;
+    public static float [][] distanceArray;
+
 
 
     public static void main(String []args){
@@ -47,12 +47,13 @@ public class Main {
             n = scanner.nextInt();
             System.out.println(n + " cities in the problem.\nLocations are:");
 
-            ArrayList<Pair<Integer, Integer>> locations = new ArrayList<Pair<Integer, Integer>>();
+            locations = new ArrayList<Pair<Float, Float>>();
 
-            int x, y;
+            float x, y;
             for (int i = 0; i < n; i++) {
-                x = scanner.nextInt();
-                y = scanner.nextInt();
+                int idx = scanner.nextInt();
+                x = scanner.nextFloat();
+                y = scanner.nextFloat();
 
                 locations.add(new Pair<>(x, y));
                 System.out.println(locations.get(i).getKey() + " " + locations.get(i).getValue());
@@ -63,14 +64,14 @@ public class Main {
 
             System.out.println("Calculating Distances...");
 
-            distanceArray = new double[n][n];
+            distanceArray = new float[n][n];
             for (int i = 0; i < n; i++) {
-                int x1 = locations.get(i).getKey();
-                int y1 = locations.get(i).getValue();
+                double x1 = locations.get(i).getKey();
+                double y1 = locations.get(i).getValue();
                 for (int j = 0; j < n; j++) {
-                    int x2 = locations.get(j).getKey();
-                    int y2 = locations.get(j).getValue();
-                    distanceArray[i][j] = Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+                    double x2 = locations.get(j).getKey();
+                    double y2 = locations.get(j).getValue();
+                    distanceArray[i][j] = (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
                 }
             }
 

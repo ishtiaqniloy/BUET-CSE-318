@@ -1,7 +1,6 @@
 package TSP;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class NearestNeighborSolution extends Solution {
     int startCityIdx;
