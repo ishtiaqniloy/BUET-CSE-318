@@ -9,17 +9,26 @@ import java.util.Scanner;
 
 public class Main {
     public static final boolean RANDOMIZED_START = true;
-    public static final int MAX_ITR = 10;
+    public static final int MAX_ITR = 1;
     public static final int MAX_CANDIDATES = 5;
     public static final Random rand = new Random();
 
     public static int n;
     public static ArrayList<Pair<Float, Float>> locations;
-    public static float [][] distanceArray;
-
 
     public static void main(String []args){
         System.out.println("Travelling Salesman Problem");
+
+        int constructionChoice, optimizationChoice;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Construction Heuristic: 1.Nearest Neighbor\t2.Savings");
+        constructionChoice = sc.nextInt();
+
+        System.out.println("Optimization Heuristic: 0.None\t1.k-Opt");
+        optimizationChoice = sc.nextInt();
+
+        sc.close();
 
         try{
             File input = new File("Input.txt");
@@ -48,9 +57,10 @@ public class Main {
 
             locations = new ArrayList<Pair<Float, Float>>();
 
+            int idx;
             float x, y;
             for (int i = 0; i < n; i++) {
-                int idx = scanner.nextInt();
+                idx = scanner.nextInt();    //for complying with test case format
                 x = scanner.nextFloat();
                 y = scanner.nextFloat();
 
@@ -61,70 +71,105 @@ public class Main {
 
             scanner.close();
 
+            ArrayList<Solution> nnSolutions;
+            ArrayList<Solution> sSolutions;
 
-            //=============================================================
-            //Input Processing
-            //=============================================================
+            if(constructionChoice == 1 ){
+                //=============================================================
+                //Nearest Neighbor Heuristic Construction
+                //=============================================================
+                System.out.println("Starting Nearest Neighbor Heuristic Construction...");
+                System.out.println();
 
-//            System.out.println("Calculating Distances...");
-//            long st = System.currentTimeMillis();
-//            distanceArray = new float[n][n];
-//            for (int i = 0; i < n; i++) {
-//                float x1 = locations.get(i).getKey();
-//                float y1 = locations.get(i).getValue();
-//                for (int j = 0; j < n; j++) {
-//                    float x2 = locations.get(j).getKey();
-//                    float y2 = locations.get(j).getValue();
-//                    distanceArray[i][j] = (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
-//                }
-//            }
-//            System.out.println("Distance Calculation required " + (System.currentTimeMillis()-st) + "ms");
-//            System.out.println();
+                nnSolutions = new ArrayList<Solution>();
 
-
-            //=============================================================
-            //Nearest Neighbor Construction
-            //=============================================================
-            System.out.println("Starting Nearest Neighbor Construction...");
-            System.out.println();
-
-            ArrayList<Solution> nnSolutions = new ArrayList<Solution>();
-
-            for (int i = 0; i < MAX_ITR; i++) {
-                System.out.println("Running " + (i+1) + "th iteration...");
-                Solution s = new NearestNeighborSolution2();
-                nnSolutions.add(s);
-                s.construct();
-            }
-
-            double minDist = 999999999;
-            int minIdx = -1;
-            double avgDist = 0;
-            double avgDuration = 0;
-
-            for (int i = 0; i < MAX_ITR; i++) {
-                Solution s = nnSolutions.get(i);
-
-                avgDist += s.getTotalDistanceTravelled() / MAX_ITR;
-                avgDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
-
-                if(s.getTotalDistanceTravelled() < minDist){
-                    minDist = s.getTotalDistanceTravelled();
-                    minIdx = i;
+                for (int i = 0; i < MAX_ITR; i++) {
+                    System.out.println("Running " + (i+1) + "th iteration...");
+                    Solution s = new NearestNeighbor();
+                    nnSolutions.add(s);
+                    s.construct();
                 }
 
-                System.out.println("Printing " + (i+1) +"th solution...");
-                s.printSolution();
+                double minDist = 999999999;
+                int minIdx = -1;
+                double avgDist = 0;
+                double avgDuration = 0;
+
+                for (int i = 0; i < MAX_ITR; i++) {
+                    Solution s = nnSolutions.get(i);
+
+                    avgDist += s.getTotalDistanceTravelled() / MAX_ITR;
+                    avgDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
+
+                    if(s.getTotalDistanceTravelled() < minDist){
+                        minDist = s.getTotalDistanceTravelled();
+                        minIdx = i;
+                    }
+
+                    System.out.println("Printing " + (i+1) +"th solution...");
+                    s.printConstruction();
+
+                }
+
+                System.out.println("***FINAL RESULTS OF NEAREST NEIGHBOR HEURISTIC****");
+                System.out.println("Average Time required for construction in Nearest Neighbor Heuristic = " + avgDuration + "ms");
+                System.out.println("Average Distance Travelled in Nearest Neighbor Heuristic = " + avgDist);
+                System.out.println();
+
+                System.out.println("Minimum Distance Solution Found in Nearest Neighbor Heuristic :");
+                nnSolutions.get(minIdx).printConstruction();
 
             }
+            else if(constructionChoice == 2){
+                //=============================================================
+                //Savings Heuristic Construction
+                //=============================================================
+                System.out.println("Starting Savings Heuristic Construction...");
+                System.out.println();
 
-            System.out.println("***FINAL RESULTS***");
-            System.out.println("Average Time required for construction in Nearest Neighbor Heuristic = " + avgDuration + "ms");
-            System.out.println("Average Distance Travelled in Nearest Neighbor Heuristic = " + avgDist);
-            System.out.println();
+                sSolutions = new ArrayList<Solution>();
 
-            System.out.println("Minimum Distance Solution Found in Nearest Neighbor Heuristic :");
-            nnSolutions.get(minIdx).printSolution();
+                for (int i = 0; i < MAX_ITR; i++) {
+                    System.out.println("Running " + (i+1) + "th iteration...");
+                    Solution s = new Savings();
+                    sSolutions.add(s);
+                    s.construct();
+                }
+
+                double minDist = 999999999;
+                int minIdx = -1;
+                double avgDist = 0;
+                double avgDuration = 0;
+
+                for (int i = 0; i < MAX_ITR; i++) {
+                    Solution s = sSolutions.get(i);
+
+                    avgDist += s.getTotalDistanceTravelled() / MAX_ITR;
+                    avgDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
+
+                    if(s.getTotalDistanceTravelled() < minDist){
+                        minDist = s.getTotalDistanceTravelled();
+                        minIdx = i;
+                    }
+
+                    System.out.println("Printing " + (i+1) +"th solution...");
+                    s.printConstruction();
+
+                }
+
+                System.out.println("***FINAL RESULTS OF SAVINGS HEURISTIC***");
+                System.out.println("Average Time required for construction in Savings Heuristic = " + avgDuration + "ms");
+                System.out.println("Average Distance Travelled in Savings Heuristic = " + avgDist);
+                System.out.println();
+
+                System.out.println("Minimum Distance Solution Found in Savings Heuristic :");
+                sSolutions.get(minIdx).printConstruction();
+
+            }
+            else{
+                System.out.println("Wrong choice of Construction Heuristic");
+            }
+
 
 
         }catch (Exception e){
@@ -133,6 +178,16 @@ public class Main {
 
 
 
+    }
+
+    public static float CalculateDistance(int i, int j){
+        float x1 = locations.get(i).getKey();
+        float y1 = locations.get(i).getValue();
+
+        float x2 = locations.get(j).getKey();
+        float y2 = locations.get(j).getValue();
+
+        return (float) Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
     }
 
 }

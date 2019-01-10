@@ -4,7 +4,7 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class NearestNeighborSolution2 extends Solution {
+public class NearestNeighbor extends Solution {
     int startCityIdx;
     int numberOfCitiesVisited;
 
@@ -12,7 +12,7 @@ public class NearestNeighborSolution2 extends Solution {
 
     boolean []visited;
 
-    NearestNeighborSolution2(){
+    NearestNeighbor(){
         super();
 
         if (Main.RANDOMIZED_START){
@@ -40,12 +40,8 @@ public class NearestNeighborSolution2 extends Solution {
 
         //Calculating all cities distance from current city
         float [] distanceArray = new float[Main.n];
-        float x1 = Main.locations.get(currentCityIdx).getKey();
-        float y1 = Main.locations.get(currentCityIdx).getValue();
         for (int j = 0; j < Main.n; j++) {
-            float x2 = Main.locations.get(j).getKey();
-            float y2 = Main.locations.get(j).getValue();
-            distanceArray[j] = (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+            distanceArray[j] = Main.CalculateDistance(j, currentCityIdx);
         }
 
         double prevMin = -1;
@@ -102,11 +98,8 @@ public class NearestNeighborSolution2 extends Solution {
 
         //going back to start city
         tourCityIdx.add(startCityIdx);
-        float x1 = Main.locations.get(currentCityIdx).getKey();
-        float x2 = Main.locations.get(currentCityIdx).getValue();
-        float y1 = Main.locations.get(startCityIdx).getKey();
-        float y2 = Main.locations.get(startCityIdx).getValue();
-        totalDistanceTravelled +=  (float) Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+
+        totalDistanceTravelled +=  Main.CalculateDistance(currentCityIdx, startCityIdx);
         numberOfRoadsTravelled++;
 
         constructionDuration = System.currentTimeMillis() - startTime;
@@ -118,20 +111,6 @@ public class NearestNeighborSolution2 extends Solution {
     @Override
     void improve() {
         //doing nothing here
-    }
-
-    @Override
-    void printSolution() {
-        System.out.println("Total Distance = " + totalDistanceTravelled);
-        System.out.println("Number of roads travelled = " + numberOfRoadsTravelled);
-        System.out.println("Time Required For construction = " + constructionDuration +"ms");
-        System.out.print("Printing city indices: ");
-        for (int i = 0; i < tourCityIdx.size(); i++) {
-            System.out.print(tourCityIdx.get(i) + " ");
-        }
-        System.out.println();
-        System.out.println();
-
     }
 
 }

@@ -61,6 +61,16 @@ public abstract class Solution {
 
     abstract void improve();
 
-    abstract void printSolution();
+    void printConstruction(){
+        System.out.println("Total Distance = " + totalDistanceTravelled);
+        System.out.println("Number of roads travelled = " + numberOfRoadsTravelled);
+        System.out.println("Time Required For construction = " + constructionDuration +"ms");
+        System.out.print("Printing city indices: ");
+        for (int i = 0; i < tourCityIdx.size(); i++) {
+            System.out.print(tourCityIdx.get(i) + " ");
+        }
+        System.out.println();
+        System.out.println();
+    }
 
 }
