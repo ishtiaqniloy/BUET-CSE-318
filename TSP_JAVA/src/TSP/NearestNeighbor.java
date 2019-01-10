@@ -4,13 +4,15 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class NearestNeighbor extends Solution {
-    int startCityIdx;
-    int numberOfCitiesVisited;
+import static java.lang.System.exit;
 
-    long startTime;
+class NearestNeighbor extends Solution {
+    private int startCityIdx;
+    private int numberOfCitiesVisited;
 
-    boolean []visited;
+    private long startTime;
+
+    private boolean []visited;
 
     NearestNeighbor(){
         super();
@@ -35,15 +37,20 @@ public class NearestNeighbor extends Solution {
 
     }
 
-    ArrayList<Pair<Integer, Float>> calculateCandidateNeighbors(int currentCityIdx){ //O(n*MAX_CANDIDATES) sort
+    private ArrayList<Pair<Integer, Float>> calculateCandidateNeighbors(int currentCityIdx){ //O(n*MAX_CANDIDATES) sort
         ArrayList<Pair<Integer, Float>> candidates = new ArrayList<Pair<Integer, Float>>();
 
+        //=============================================================
         //Calculating all cities distance from current city
+        //=============================================================
         float [] distanceArray = new float[Main.n];
         for (int j = 0; j < Main.n; j++) {
-            distanceArray[j] = Main.CalculateDistance(j, currentCityIdx);
+            distanceArray[j] = Main.calculateDistance(j, currentCityIdx);
         }
 
+        //=============================================================
+        //Gathering candidates
+        //=============================================================
         double prevMin = -1;
         for (int i = 0; i < Main.MAX_CANDIDATES; i++) {
             float minVal = 999999999;
@@ -81,11 +88,16 @@ public class NearestNeighbor extends Solution {
 
         int currentCityIdx = startCityIdx;
 
+        //=============================================================
+        //Going to Random Candidate
+        //=============================================================
         while(numberOfCitiesVisited!=Main.n){
             ArrayList<Pair<Integer, Float>> candidateCities = calculateCandidateNeighbors(currentCityIdx);
 
-            int nextCityIdx = candidateCities.get( Main.rand.nextInt(candidateCities.size())).getKey();
-            float nextCityDist = candidateCities.get( Main.rand.nextInt(candidateCities.size())).getValue();
+            int randIdx = Main.rand.nextInt(candidateCities.size());
+
+            int nextCityIdx = candidateCities.get(randIdx).getKey();
+            float nextCityDist = candidateCities.get(randIdx).getValue();
 
             tourCityIdx.add(nextCityIdx);
             visited[nextCityIdx] = true;
@@ -96,13 +108,21 @@ public class NearestNeighbor extends Solution {
             currentCityIdx = nextCityIdx;
         }
 
-        //going back to start city
+        //=============================================================
+        //Going back to start
+        //=============================================================
         tourCityIdx.add(startCityIdx);
-
-        totalDistanceTravelled +=  Main.CalculateDistance(currentCityIdx, startCityIdx);
+        totalDistanceTravelled +=  Main.calculateDistance(currentCityIdx, startCityIdx);
         numberOfRoadsTravelled++;
 
         constructionDuration = System.currentTimeMillis() - startTime;
+
+
+        if(!checkSolution()){
+            System.out.println("******WRONG CONSTRUCTION******");
+            printConstruction();
+            exit(0);
+        }
 
         System.out.println("Finished Construction in Nearest Neighbor Heuristic");
         System.out.println();

@@ -73,4 +73,39 @@ public abstract class Solution {
         System.out.println();
     }
 
+    public boolean checkSolution(){
+        int size = tourCityIdx.size();
+        boolean[] visit = new boolean[Main.n];
+
+        for (int i = 0; i < Main.n; i++) {
+            visit[i] = false;
+        }
+
+        for (int i = 0; i < size-1; i++) {
+            int idx = tourCityIdx.get(i);
+            if(visit[idx]){
+                System.out.println("Visited " + idx + " twice...");
+                return false;
+            }
+            visit[idx] = true;
+        }
+
+        int start = tourCityIdx.get(0);
+        int end = tourCityIdx.get(size-1);
+        if( start != end){
+            System.out.println("Start and End not the same...");
+            return false;
+        }
+
+        for (int i = 0; i < Main.n; i++) {
+            if (!visit[i]) {
+                System.out.println("Didn't Visit " + i + "...");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 }

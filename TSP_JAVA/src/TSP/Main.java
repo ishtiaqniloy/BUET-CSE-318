@@ -9,12 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static final boolean RANDOMIZED_START = true;
-    public static final int MAX_ITR = 1;
+    public static final int MAX_ITR = 500;
     public static final int MAX_CANDIDATES = 5;
     public static final Random rand = new Random();
 
     public static int n;
     public static ArrayList<Pair<Float, Float>> locations;
+
+    public static int k;
 
     public static void main(String []args){
         System.out.println("Travelling Salesman Problem");
@@ -27,6 +29,11 @@ public class Main {
 
         System.out.println("Optimization Heuristic: 0.None\t1.k-Opt");
         optimizationChoice = sc.nextInt();
+
+        if(optimizationChoice==1){
+            System.out.println("Enter value of k");
+            k = sc.nextInt();
+        }
 
         sc.close();
 
@@ -180,7 +187,7 @@ public class Main {
 
     }
 
-    public static float CalculateDistance(int i, int j){
+    public static float calculateDistance(int i, int j){
         float x1 = locations.get(i).getKey();
         float y1 = locations.get(i).getValue();
 
