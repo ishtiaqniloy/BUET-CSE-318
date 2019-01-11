@@ -8,7 +8,7 @@ import java.util.Comparator;
 import static java.lang.System.exit;
 
 class Savings extends Solution{
-    private int startCityIdx;
+    private static int MAX_TRY = Main.n*Main.n;
 
     private ArrayList<ArrayList<Integer>> adjacencyList;
     private ArrayList<Integer> startArray;
@@ -21,7 +21,6 @@ class Savings extends Solution{
 
         if (Main.RANDOMIZED_START){
             startCityIdx =  Main.rand.nextInt(Main.n);
-            startCityIdx = 94;
         }
         else{
             startCityIdx = 0;
@@ -148,135 +147,46 @@ class Savings extends Solution{
     }
 
     private void correctAdjacencyList(){
-        ArrayList<Integer> tempArray = adjacencyList.get(startCityIdx);
+        ArrayList<Integer> startIdxArray = adjacencyList.get(startCityIdx);
 
-        if(tempArray.size()==2){
+        if(startIdxArray.size()==2){
             buildTourArray();
             return;
         }
-
-        int num = (tempArray.size()/2)-1;
 
 //        System.out.println("Before Testing start array size:");
 //        printAdjacencyList();
 
         //=============================================================
-        //Finding all possible edges
-        //=============================================================
-        ArrayList <Pair<Integer, Integer>> allPairs = new ArrayList<Pair<Integer, Integer>>();
-
-        for (int i = 0; i < tempArray.size()-1; i++) {
-            for (int j = i+1; j < tempArray.size(); j++) {
-                allPairs.add(new Pair<Integer, Integer>(tempArray.get(i),tempArray.get(j)));
-            }
-        }
-
-        System.out.println("All Pairs: ");
-        for (Pair<Integer, Integer> entry: allPairs) {
-            System.out.println("<" + entry.getKey() + "," + entry.getValue() + ">");
-        }
-
-
-        //=============================================================
         //Correcting Adjacency List
         //=============================================================
 
-        ArrayList <Pair<Integer, Integer>> edges = new ArrayList<Pair<Integer, Integer>>();
-        ArrayList <Integer> takenPoints = new ArrayList<Integer>();
-        for (int i = num; i < allPairs.size(); i++) { //take num edges from first i entries
-            if(num==0){
+        for (int itr = 0; itr < MAX_TRY; itr++) {
+            ArrayList<Integer> tempArray = new ArrayList<Integer>(startIdxArray);
+            ArrayList<Pair<Integer, Integer>> edges = new ArrayList<Pair<Integer, Integer>>();
+
+            while (tempArray.size()>2){
+                int i = tempArray.remove(Main.rand.nextInt(tempArray.size()));
+                int j = tempArray.remove(Main.rand.nextInt(tempArray.size()));
+
+                edges.add(new Pair<Integer, Integer>(i, j));
+            }
+
+            updateGraph(edges);
+            buildTourArray();
+            if(checkSolution()){
                 break;
             }
-
-            boolean []tempFlags = new boolean[i]; //array to find combination of num edges from i entries
-            for (int j = 0; j < num; j++) {
-                tempFlags[j] = true;            //initially take first j entries
+            else {
+                clearTour();
+                revertGraph(edges);
             }
-            for (int j = num; j < i; j++) {
-                tempFlags[j] = false;
-            }
-
-            boolean flag = true;
-
-            while(flag){
-                flag = false;
-                int k = i-1;
-                edges.clear();
-                takenPoints.clear();
-
-                while(k>=0 && tempFlags[k]){ //clearing consecutive 1's from right
-                    k--;
-                }
-                while(k>=0 && !tempFlags[k]){ //clearing consecutive 0's after consecutive 1's from right
-                    k--;
-                }
-                if(k>=0){
-                    flag = true;
-                }
-                else {
-                    continue;
-                }
-
-                tempFlags[k] = false;
-                tempFlags[k+1] = true;
-
-                boolean doThisIteration = true;
-                for (int j = 0; j < i; j++) {
-                    if (tempFlags[j]){
-                        Pair<Integer, Integer> edge = allPairs.get(j);
-                        if (takenPoints.contains(edge.getKey()) || takenPoints.contains(edge.getKey()) ){
-                            doThisIteration = false;
-                            break;
-                        }
-                        edges.add(edge);
-                        takenPoints.add(edge.getKey());
-                        takenPoints.add(edge.getValue());
-                    }
-                }
-
-                if(doThisIteration){
-                    System.out.println("trying with num i k : " + num + " " + i + " " + k);
-                    System.out.print("EDGES: ");
-                    for (Pair<Integer, Integer> edge: edges ) {
-                        System.out.print("<" + edge.getKey() + "," + edge.getValue() +"> ");
-                    }
-                    System.out.println();
-
-                    updateGraph(edges);
-                    buildTourArray();
-                    System.out.println("CHECKING HERE: ");
-                    printAdjacencyList();
-                    boolean success = checkSolution();
-                    if(success){
-                        break;
-                    }
-                    else {
-                        clearTour();
-                        revertGraph(edges);
-                    }
-
-                    printAdjacencyList();
-                }
-                else {
-//                    System.out.println("Iteration Skipped with num i k : " + num + " " + i + " " + k);
-//                    System.out.print("EDGES: ");
-//                    for (Pair<Integer, Integer> edge: edges ) {
-//                        System.out.print("<" + edge.getKey() + "," + edge.getValue() +"> ");
-//                    }
-//                    System.out.println();
-                }
-
-            }
-
-//            clearTour();
-//            buildTourArray();
-//            if(checkSolution()){
-//                break;
-//            }
-
-
 
         }
+        if(!checkSolution()){
+            System.out.println("MAX_TRY Reached");
+        }
+
 
         System.out.println("Printing Corrected Adjacency Lists");
         printAdjacencyList();

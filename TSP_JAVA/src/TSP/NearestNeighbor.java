@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import static java.lang.System.exit;
 
 class NearestNeighbor extends Solution {
-    private int startCityIdx;
     private int numberOfCitiesVisited;
 
     private long startTime;

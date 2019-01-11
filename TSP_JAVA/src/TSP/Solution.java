@@ -3,6 +3,7 @@ package TSP;
 import java.util.ArrayList;
 
 public abstract class Solution {
+    int startCityIdx;
     ArrayList<Integer> tourCityIdx;
     long constructionDuration;
     long optimizationDuration;
@@ -10,6 +11,7 @@ public abstract class Solution {
     long numberOfRoadsTravelled;
 
     Solution(){
+        startCityIdx = -1;
         tourCityIdx = new ArrayList<Integer>();
         constructionDuration = 0;
         optimizationDuration = 0;
@@ -62,6 +64,7 @@ public abstract class Solution {
     abstract void improve();
 
     void printConstruction(){
+        System.out.println("Start City = " + startCityIdx);
         System.out.println("Total Distance = " + totalDistanceTravelled);
         System.out.println("Number of roads travelled = " + numberOfRoadsTravelled);
         System.out.println("Time Required For construction = " + constructionDuration +"ms");

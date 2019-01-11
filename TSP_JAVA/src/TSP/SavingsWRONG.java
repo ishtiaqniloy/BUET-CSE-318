@@ -7,7 +7,6 @@
 //
 //
 //public class Savings2 extends Solution{
-//    int startCityIdx;
 //    int []nextCity;
 //
 //    long startTime;
