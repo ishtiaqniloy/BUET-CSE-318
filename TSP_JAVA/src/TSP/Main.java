@@ -13,6 +13,8 @@ public class Main {
     public static final int MAX_CANDIDATES = 5;
     public static final Random rand = new Random();
 
+    public static int constructionWrongSolution = 0;
+    public static int optimizationWrongSolution = 0;
     public static int n;
     public static ArrayList<Pair<Float, Float>> locations;
 
@@ -153,6 +155,8 @@ public class Main {
                 System.out.println("Minimum Distance Solution Found in Savings Heuristic :");
                 solutions.get(minIdx).printConstruction();
             }
+
+            System.out.println("Number of Wrong Solutions = " + constructionWrongSolution);
 
 
             if(optimizationChoice == 1){

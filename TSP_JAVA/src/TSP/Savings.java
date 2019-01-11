@@ -5,10 +5,8 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import static java.lang.System.exit;
-
 class Savings extends Solution{
-    private static int MAX_TRY = Main.n*Main.n;
+    private static int MAX_TRY = Main.n;
 
     private ArrayList<ArrayList<Integer>> adjacencyList;
     private ArrayList<Integer> startArray;
@@ -141,8 +139,8 @@ class Savings extends Solution{
 
         }
 
-        System.out.println("Printing Updated Adjacency Lists");
-        printAdjacencyList();
+//        System.out.println("Printing Updated Adjacency Lists");
+//        printAdjacencyList();
 
     }
 
@@ -175,7 +173,7 @@ class Savings extends Solution{
             updateGraph(edges);
             buildTourArray();
             if(checkSolution()){
-                break;
+                return;
             }
             else {
                 clearTour();
@@ -184,12 +182,12 @@ class Savings extends Solution{
 
         }
         if(!checkSolution()){
-            System.out.println("MAX_TRY Reached");
+            System.out.println("***MAX_TRY REACHED***");
         }
 
 
-        System.out.println("Printing Corrected Adjacency Lists");
-        printAdjacencyList();
+//        System.out.println("Printing Corrected Adjacency Lists");
+//        printAdjacencyList();
 
     }
 
@@ -310,10 +308,15 @@ class Savings extends Solution{
         if(!checkSolution()){
             System.out.println("******WRONG CONSTRUCTION******");
             printConstruction();
-            exit(0);
+            Main.constructionWrongSolution++;
+            //exit(0);
         }
 
         constructionDuration = System.currentTimeMillis() - startTime;
+
+        adjacencyList = null;
+        startArray = null;
+        savings = null;
 
         System.out.println("Finished Construction in Savings Heuristic");
         System.out.println();

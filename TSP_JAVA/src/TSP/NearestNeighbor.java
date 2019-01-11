@@ -4,8 +4,6 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-import static java.lang.System.exit;
-
 class NearestNeighbor extends Solution {
     private int numberOfCitiesVisited;
 
@@ -105,6 +103,7 @@ class NearestNeighbor extends Solution {
             numberOfCitiesVisited++;
 
             currentCityIdx = nextCityIdx;
+            candidateCities = null;
         }
 
         //=============================================================
@@ -120,8 +119,11 @@ class NearestNeighbor extends Solution {
         if(!checkSolution()){
             System.out.println("******WRONG CONSTRUCTION******");
             printConstruction();
-            exit(0);
+            Main.constructionWrongSolution++;
+            //exit(0);
         }
+
+        visited = null;
 
         System.out.println("Finished Construction in Nearest Neighbor Heuristic");
         System.out.println();

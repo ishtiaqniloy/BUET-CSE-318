@@ -78,7 +78,7 @@ public abstract class Solution {
 
     public boolean checkSolution(){
         if(tourCityIdx.isEmpty()){
-            System.out.println("Empty");
+            System.out.println("Check Solution : Empty");
             return false;
         }
 
@@ -92,7 +92,7 @@ public abstract class Solution {
         for (int i = 0; i < size-1; i++) {
             int idx = tourCityIdx.get(i);
             if(visit[idx]){
-                System.out.println("Visited " + idx + " twice...");
+                System.out.println("Check Solution : Visited " + idx + " twice...");
                 return false;
             }
             visit[idx] = true;
@@ -101,18 +101,18 @@ public abstract class Solution {
         int start = tourCityIdx.get(0);
         int end = tourCityIdx.get(size-1);
         if( start != end){
-            System.out.println("Start and End not the same...");
+            System.out.println("Check Solution : Start and End not the same...");
             return false;
         }
 
         for (int i = 0; i < Main.n; i++) {
             if (!visit[i]) {
-                System.out.println("Didn't Visit " + i + "...");
+                System.out.println("Check Solution : Didn't Visit " + i + "...");
                 return false;
             }
         }
 
-        System.out.println("CORRECT SOLUTION!!!");
+        System.out.println("Check Solution : CORRECT SOLUTION!!!");
         return true;
     }
 
