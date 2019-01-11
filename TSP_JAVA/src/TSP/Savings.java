@@ -13,7 +13,6 @@ class Savings extends Solution{
     private ArrayList<ArrayList<Integer>> adjacencyList;
     private ArrayList<Integer> startArray;
     private ArrayList <Pair<Pair<Integer, Integer>, Float>> savings;
-    private ArrayList<Pair<Integer, Integer>> disjoint;
 
     long startTime;
 
@@ -37,7 +36,6 @@ class Savings extends Solution{
 
         startArray = new ArrayList<Integer>();
         savings = new ArrayList <Pair<Pair<Integer, Integer>, Float>>(); //((i,j),saving)
-        disjoint = new ArrayList<Pair<Integer, Integer>>();
 
     }
 
@@ -126,9 +124,6 @@ class Savings extends Solution{
 
             if(!startArray.contains(i) && !startArray.contains(j)){
                 //System.out.println("Will become disjoint");
-                if(adjacencyList.get(startCityIdx).contains(i) && adjacencyList.get(startCityIdx).contains(j)){
-                    disjoint.add(new Pair<Integer, Integer>(i,j));
-                }
                 continue;
             }
             else if(!adjacencyList.get(startCityIdx).contains(i) || !adjacencyList.get(startCityIdx).contains(j)){
@@ -166,18 +161,30 @@ class Savings extends Solution{
 //        printAdjacencyList();
 
         //=============================================================
+        //Finding all possible edges
+        //=============================================================
+        ArrayList <Pair<Integer, Integer>> allPairs = new ArrayList<Pair<Integer, Integer>>();
+
+        for (int i = 0; i < tempArray.size()-1; i++) {
+            for (int j = i+1; j < tempArray.size(); j++) {
+                allPairs.add(new Pair<Integer, Integer>(tempArray.get(i),tempArray.get(j)));
+            }
+        }
+
+        System.out.println("All Pairs: ");
+        for (Pair<Integer, Integer> entry: allPairs) {
+            System.out.println("<" + entry.getKey() + "," + entry.getValue() + ">");
+        }
+
+
+        //=============================================================
         //Correcting Adjacency List
         //=============================================================
 
-        if(num>disjoint.size()){
-            System.out.println("NOT ENOUGH EDGES IN DISJOINT ARRAY");
-        }
-
         ArrayList <Pair<Integer, Integer>> edges = new ArrayList<Pair<Integer, Integer>>();
-        for (int i = num; i < disjoint.size(); i++) { //take num edges from first i entries
-
+        ArrayList <Integer> takenPoints = new ArrayList<Integer>();
+        for (int i = num; i < allPairs.size(); i++) { //take num edges from first i entries
             if(num==0){
-                buildTourArray();
                 break;
             }
 
@@ -190,14 +197,17 @@ class Savings extends Solution{
             }
 
             boolean flag = true;
+
             while(flag){
                 flag = false;
                 int k = i-1;
+                edges.clear();
+                takenPoints.clear();
 
-                while(tempFlags[k] && k>=0){ //clearing consecutive 1's from right
+                while(k>=0 && tempFlags[k]){ //clearing consecutive 1's from right
                     k--;
                 }
-                while(!tempFlags[k] && k>=0){ //clearing consecutive 0's after consecutive 1's from right
+                while(k>=0 && !tempFlags[k]){ //clearing consecutive 0's after consecutive 1's from right
                     k--;
                 }
                 if(k>=0){
@@ -206,27 +216,65 @@ class Savings extends Solution{
                 else {
                     continue;
                 }
+
                 tempFlags[k] = false;
                 tempFlags[k+1] = true;
 
+                boolean doThisIteration = true;
                 for (int j = 0; j < i; j++) {
                     if (tempFlags[j]){
-                        edges.add(disjoint.get(j));
+                        Pair<Integer, Integer> edge = allPairs.get(j);
+                        if (takenPoints.contains(edge.getKey()) || takenPoints.contains(edge.getKey()) ){
+                            doThisIteration = false;
+                            break;
+                        }
+                        edges.add(edge);
+                        takenPoints.add(edge.getKey());
+                        takenPoints.add(edge.getValue());
                     }
+                }
+
+                if(doThisIteration){
+                    System.out.println("trying with num i k : " + num + " " + i + " " + k);
+                    System.out.print("EDGES: ");
+                    for (Pair<Integer, Integer> edge: edges ) {
+                        System.out.print("<" + edge.getKey() + "," + edge.getValue() +"> ");
+                    }
+                    System.out.println();
+
+                    updateGraph(edges);
+                    buildTourArray();
+                    System.out.println("CHECKING HERE: ");
+                    printAdjacencyList();
+                    boolean success = checkSolution();
+                    if(success){
+                        break;
+                    }
+                    else {
+                        clearTour();
+                        revertGraph(edges);
+                    }
+
+                    printAdjacencyList();
+                }
+                else {
+//                    System.out.println("Iteration Skipped with num i k : " + num + " " + i + " " + k);
+//                    System.out.print("EDGES: ");
+//                    for (Pair<Integer, Integer> edge: edges ) {
+//                        System.out.print("<" + edge.getKey() + "," + edge.getValue() +"> ");
+//                    }
+//                    System.out.println();
                 }
 
             }
 
-            updateGraph(edges);
-            buildTourArray();
-            boolean success = checkSolution();
-            if(success){
-                break;
-            }
-            else {
-                clearTour();
-                revertGraph(edges);
-            }
+//            clearTour();
+//            buildTourArray();
+//            if(checkSolution()){
+//                break;
+//            }
+
+
 
         }
 

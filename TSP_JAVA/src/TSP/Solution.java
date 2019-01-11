@@ -25,7 +25,7 @@ public abstract class Solution {
         this.tourCityIdx = tourCityIdx;
     }
 
-    public double getConstructionDuration() {
+    public long getConstructionDuration() {
         return constructionDuration;
     }
 
@@ -74,6 +74,11 @@ public abstract class Solution {
     }
 
     public boolean checkSolution(){
+        if(tourCityIdx.isEmpty()){
+            System.out.println("Empty");
+            return false;
+        }
+
         int size = tourCityIdx.size();
         boolean[] visit = new boolean[Main.n];
 
@@ -104,6 +109,7 @@ public abstract class Solution {
             }
         }
 
+        System.out.println("CORRECT SOLUTION!!!");
         return true;
     }
 
