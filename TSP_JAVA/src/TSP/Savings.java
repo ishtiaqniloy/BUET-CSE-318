@@ -12,6 +12,8 @@ class Savings extends Solution{
 
     private ArrayList<ArrayList<Integer>> adjacencyList;
     private ArrayList<Integer> startArray;
+    private ArrayList <Pair<Pair<Integer, Integer>, Float>> savings;
+    private ArrayList<Pair<Integer, Integer>> disjoint;
 
     long startTime;
 
@@ -32,93 +34,20 @@ class Savings extends Solution{
         for (int i = 0; i < Main.n; i++) {
             adjacencyList.add(new ArrayList<Integer>());
         }
+
         startArray = new ArrayList<Integer>();
+        savings = new ArrayList <Pair<Pair<Integer, Integer>, Float>>(); //((i,j),saving)
+        disjoint = new ArrayList<Pair<Integer, Integer>>();
 
     }
 
-    private void updateGraph(int i, int j){
-        //removing 2 bidirectional edges
-        adjacencyList.get(i).remove(new Integer(startCityIdx));
-        adjacencyList.get(startCityIdx).remove(new Integer(i));
-
-        adjacencyList.get(startCityIdx).remove(new Integer(j));
-        adjacencyList.get(j).remove(new Integer(startCityIdx));
-
-        startArray.remove(new Integer(i));
-        startArray.remove(new Integer(j));
-
-        //add bidirectional edge between i and j
-        adjacencyList.get(i).add(j);
-        adjacencyList.get(j).add(i);
-    }
-
-    private boolean updateTest(int i, int j){
-        if(i==j){
-            return false;
-        }
-        updateGraph(i,j);
-
-        tourCityIdx.add(startCityIdx);
-        int currentCityIdx = startCityIdx;
-        while (tourCityIdx.size()!=Main.n){
-            ArrayList<Integer> list = adjacencyList.get(currentCityIdx);
-            int nextCityIdx = list.get(0);
-            if(tourCityIdx.contains(nextCityIdx)){
-                nextCityIdx = list.get(1);
-            }
-            tourCityIdx.add(nextCityIdx);
-            currentCityIdx = nextCityIdx;
-        }
-
-        //going back to start city
-        tourCityIdx.add(startCityIdx);
-
-        boolean success = checkSolution();
-
-        tourCityIdx.clear();
-
-        if(!success){
-            adjacencyList.get(i).add(new Integer(startCityIdx));
-            adjacencyList.get(startCityIdx).add(new Integer(i));
-
-            adjacencyList.get(startCityIdx).add(new Integer(j));
-            adjacencyList.get(j).add(new Integer(startCityIdx));
-
-            //remove bidirectional edge between i and j
-            adjacencyList.get(i).remove(new Integer(j));
-            adjacencyList.get(j).remove(new Integer(i));
-        }
-
-        return success;
-    }
-
-    private void printAdjacencyList(){
-        for (int n1 = 0; n1 < Main.n; n1++) {
-            System.out.print(n1 + ": ");
-            for (int n2: adjacencyList.get(n1) ) {
-                System.out.print(n2 + " ");
-            }
-            System.out.println();
-        }
-        System.out.print("Start Array: ");
-        for (int n2: startArray ) {
-            System.out.print(n2 + " ");
-        }
-        System.out.println();
-    }
-
-    @Override
-    void construct() {
-        System.out.println("Starting Construction in Savings Heuristic");
-        startTime = System.currentTimeMillis();
-
-
+    private void calculateSavings(){
         //=============================================================
         //Calculating Savings
         //=============================================================
         System.out.println("Started Calculating Savings");
 
-        ArrayList <Pair<Pair<Integer, Integer>, Float>> savings = new ArrayList <Pair<Pair<Integer, Integer>, Float>>(); //((i,j),saving)
+        savings.clear();
         for (int i = 0; i < Main.n; i++) {
             if(i==startCityIdx){
                 continue;
@@ -156,7 +85,9 @@ class Savings extends Solution{
 //        for (Pair<Pair<Integer, Integer>, Float> entry: savings) {
 //            System.out.println( entry.getKey().getKey() + " " +  entry.getKey().getValue() + " " + entry.getValue());
 //        }
+    }
 
+    private void initializeAdjacencyList(){
         //=============================================================
         //Connecting Every Node with Starting Node
         //=============================================================
@@ -179,12 +110,13 @@ class Savings extends Solution{
 
 //        System.out.println("Printing Initial Adjacency Lists");
 //        printAdjacencyList();
+    }
 
-
+    private void updateAdjacencyList(){
         //=============================================================
         //Updating Adjacency Lists According to Savings
         //=============================================================
-        ArrayList<Pair<Integer, Integer>> disjoint = new ArrayList<Pair<Integer, Integer>>();
+
         System.out.println("Iterating Sorted Savings Array to Update Adjacency Lists");
         for (Pair<Pair<Integer, Integer>, Float> entry: savings) {
             int i = entry.getKey().getKey();
@@ -194,7 +126,9 @@ class Savings extends Solution{
 
             if(!startArray.contains(i) && !startArray.contains(j)){
                 //System.out.println("Will become disjoint");
-                disjoint.add(new Pair<Integer, Integer>(i,j));
+                if(adjacencyList.get(startCityIdx).contains(i) && adjacencyList.get(startCityIdx).contains(j)){
+                    disjoint.add(new Pair<Integer, Integer>(i,j));
+                }
                 continue;
             }
             else if(!adjacencyList.get(startCityIdx).contains(i) || !adjacencyList.get(startCityIdx).contains(j)){
@@ -213,36 +147,145 @@ class Savings extends Solution{
 
         }
 
-//        System.out.println("Before Testing start array size:");
-//        printAdjacencyList();
-
-        startArray = adjacencyList.get(startCityIdx);
-        while (startArray.size()>2){
-            Pair<Integer, Integer> edge;
-            if(disjoint.isEmpty()){
-                //System.out.println("ERROR: Disjoint array is empty...");
-                edge = new Pair<Integer, Integer>(startArray.get(Main.rand.nextInt(startArray.size())),startArray.get(Main.rand.nextInt(startArray.size())));
-            }
-            else {
-                edge = disjoint.remove(0);
-            }
-
-
-            if(!startArray.contains(edge.getKey()) || !startArray.contains(edge.getValue())){
-                continue;
-            }
-
-            boolean success = updateTest(edge.getKey(), edge.getValue());
-
-            System.out.println("After a try with " + edge.getKey() + " " + edge.getValue() + " :");
-            //printAdjacencyList();
-            System.out.println("Success = " + success);
-
-        }
-
         System.out.println("Printing Updated Adjacency Lists");
         printAdjacencyList();
 
+    }
+
+    private void correctAdjacencyList(){
+        ArrayList<Integer> tempArray = adjacencyList.get(startCityIdx);
+
+        if(tempArray.size()==2){
+            buildTourArray();
+            return;
+        }
+
+        int num = (tempArray.size()/2)-1;
+
+//        System.out.println("Before Testing start array size:");
+//        printAdjacencyList();
+
+        //=============================================================
+        //Correcting Adjacency List
+        //=============================================================
+
+        if(num>disjoint.size()){
+            System.out.println("NOT ENOUGH EDGES IN DISJOINT ARRAY");
+        }
+
+        ArrayList <Pair<Integer, Integer>> edges = new ArrayList<Pair<Integer, Integer>>();
+        for (int i = num; i < disjoint.size(); i++) { //take num edges from first i entries
+
+            if(num==0){
+                buildTourArray();
+                break;
+            }
+
+            boolean []tempFlags = new boolean[i]; //array to find combination of num edges from i entries
+            for (int j = 0; j < num; j++) {
+                tempFlags[j] = true;            //initially take first j entries
+            }
+            for (int j = num; j < i; j++) {
+                tempFlags[j] = false;
+            }
+
+            boolean flag = true;
+            while(flag){
+                flag = false;
+                int k = i-1;
+
+                while(tempFlags[k] && k>=0){ //clearing consecutive 1's from right
+                    k--;
+                }
+                while(!tempFlags[k] && k>=0){ //clearing consecutive 0's after consecutive 1's from right
+                    k--;
+                }
+                if(k>=0){
+                    flag = true;
+                }
+                else {
+                    continue;
+                }
+                tempFlags[k] = false;
+                tempFlags[k+1] = true;
+
+                for (int j = 0; j < i; j++) {
+                    if (tempFlags[j]){
+                        edges.add(disjoint.get(j));
+                    }
+                }
+
+            }
+
+            updateGraph(edges);
+            buildTourArray();
+            boolean success = checkSolution();
+            if(success){
+                break;
+            }
+            else {
+                clearTour();
+                revertGraph(edges);
+            }
+
+        }
+
+        System.out.println("Printing Corrected Adjacency Lists");
+        printAdjacencyList();
+
+    }
+
+    private void updateGraph(int i, int j){
+        //removing 2 bidirectional edges
+        adjacencyList.get(i).remove(new Integer(startCityIdx));
+        adjacencyList.get(startCityIdx).remove(new Integer(i));
+
+        adjacencyList.get(startCityIdx).remove(new Integer(j));
+        adjacencyList.get(j).remove(new Integer(startCityIdx));
+
+        startArray.remove(new Integer(i));
+        startArray.remove(new Integer(j));
+
+        //add bidirectional edge between i and j
+        adjacencyList.get(i).add(j);
+        adjacencyList.get(j).add(i);
+    }
+
+    private void updateGraph(ArrayList<Pair<Integer, Integer>> edges){
+        for (Pair<Integer, Integer> entry: edges) {
+            int i = entry.getKey();
+            int j = entry.getValue();
+
+            updateGraph(i,j);
+
+        }
+
+    }
+
+    private void revertGraph(int i, int j){
+        adjacencyList.get(i).add(startCityIdx);
+        adjacencyList.get(startCityIdx).add(i);
+
+        adjacencyList.get(startCityIdx).add(j);
+        adjacencyList.get(j).add(startCityIdx);
+
+        //remove bidirectional edge between i and j
+        adjacencyList.get(i).remove(new Integer(j));
+        adjacencyList.get(j).remove(new Integer(i));
+
+
+    }
+
+    private void revertGraph(ArrayList<Pair<Integer, Integer>> edges){
+        for (Pair<Integer, Integer> entry: edges) {
+            int i = entry.getKey();
+            int j = entry.getValue();
+
+            revertGraph(i, j);
+        }
+    }
+
+    private void buildTourArray(){
         tourCityIdx.add(startCityIdx);
         int currentCityIdx = startCityIdx;
 
@@ -266,11 +309,44 @@ class Savings extends Solution{
         tourCityIdx.add(startCityIdx);
         totalDistanceTravelled +=  Main.calculateDistance(currentCityIdx, startCityIdx);
         numberOfRoadsTravelled++;
+    }
 
-        constructionDuration = System.currentTimeMillis() - startTime;
+    private void clearTour(){
+        tourCityIdx.clear();
+        totalDistanceTravelled = 0;
+        numberOfRoadsTravelled = 0;
 
-        System.out.println("Finished Construction in Savings Heuristic");
+    }
+
+    private void printAdjacencyList(){
+        for (int n1 = 0; n1 < Main.n; n1++) {
+            System.out.print(n1 + ": ");
+            for (int n2: adjacencyList.get(n1) ) {
+                System.out.print(n2 + " ");
+            }
+            System.out.println();
+        }
+        System.out.print("Start Array: ");
+        for (int n2: startArray ) {
+            System.out.print(n2 + " ");
+        }
         System.out.println();
+    }
+
+
+
+    @Override
+    void construct() {
+        System.out.println("Starting Construction in Savings Heuristic");
+        startTime = System.currentTimeMillis();
+
+        calculateSavings();
+
+        initializeAdjacencyList();
+
+        updateAdjacencyList();
+
+        correctAdjacencyList();
 
 
         if(!checkSolution()){
@@ -278,6 +354,11 @@ class Savings extends Solution{
             printConstruction();
             exit(0);
         }
+
+        constructionDuration = System.currentTimeMillis() - startTime;
+
+        System.out.println("Finished Construction in Savings Heuristic");
+        System.out.println();
 
         //printConstruction();
     }
