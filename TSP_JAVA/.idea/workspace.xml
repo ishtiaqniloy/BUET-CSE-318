@@ -4,9 +4,9 @@
     <list default="true" id="829c02fa-eb91-424a-a44d-a0655ce96d55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TSP/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TSP/Savings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Savings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TSP/SavingsWRONG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/SavingsWRONG.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TSP/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Solution.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,16 +16,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+            <state relative-caret-position="-27">
+              <caret line="168" column="12" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2502#2512#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,12 +47,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TSP/Savings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="255">
+              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5813#5822#0" expanded="true" />
-                <element signature="e#5919#5943#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,11 +59,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TSP/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="66" column="57" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
+            <state relative-caret-position="153">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding>
-                <element signature="e#1378#1379#0" expanded="true" />
-                <element signature="e#1423#1424#0" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+                <element signature="e#672#673#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TSP/K_Opt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -70,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TSP/NearestNeighbor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="187">
+              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,7 +100,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Input.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -112,9 +124,15 @@
       <find>currentCityIdx</find>
       <find>tourCityIdx.add</find>
       <find>Saving</find>
-      <find>print</find>
       <find>setout</find>
+      <find>print</find>
+      <find>Start</find>
+      <find>Simple</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Simple</replace>
+      <replace>Random</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -142,14 +160,20 @@
         <option value="$PROJECT_DIR$/Input929.txt" />
         <option value="$PROJECT_DIR$/src/TSP/Savings2.java" />
         <option value="$PROJECT_DIR$/src/TSP/K_Opt.java" />
-        <option value="$PROJECT_DIR$/src/TSP/Main.java" />
-        <option value="$PROJECT_DIR$/Input.txt" />
-        <option value="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" />
         <option value="$PROJECT_DIR$/src/TSP/SavingsWRONG.java" />
+        <option value="$PROJECT_DIR$/Input.txt" />
         <option value="$PROJECT_DIR$/src/TSP/Solution.java" />
+        <option value="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" />
         <option value="$PROJECT_DIR$/src/TSP/Savings.java" />
+        <option value="$PROJECT_DIR$/src/TSP/Main.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
@@ -193,7 +217,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547220320273" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547316868403" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CSE_318_Offline2_N_Puzzle/CSE_318_Offline2_N_Puzzle" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -255,7 +279,8 @@
       <workItem from="1547049090514" duration="60000" />
       <workItem from="1547049340999" duration="15118000" />
       <workItem from="1547129357203" duration="18958000" />
-      <workItem from="1547187803361" duration="13385000" />
+      <workItem from="1547187803361" duration="17275000" />
+      <workItem from="1547312479456" duration="4841000" />
     </task>
     <task id="LOCAL-00001" summary="abstract class named Solution written">
       <created>1546875424234</created>
@@ -306,16 +331,31 @@
       <option name="project" value="LOCAL" />
       <updated>1547201123843</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Savings done with random tries. testing required">
+      <created>1547220512631</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547220512631</updated>
+    </task>
+    <task id="LOCAL-00009" summary="tested savings">
+      <created>1547224889240</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1547224889240</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61313000" />
+    <option name="totallyTimeSpent" value="70044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19288956" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19591528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -323,8 +363,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4091653" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4091653" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -337,14 +377,14 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="bottom" id="Duplicate detector" order="13" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.24962178" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="7" weight="0.32980332" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.24962178" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +438,13 @@
     <MESSAGE value="Problem with Savings heuristic" />
     <MESSAGE value="Correcting savings. not done yet" />
     <MESSAGE value="Tried new way with all pairs. new way is to remove one by one from that. will implement in later commits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tried new way with all pairs. new way is to remove one by one from that. will implement in later commits" />
+    <MESSAGE value="Savings done with random tries. testing required" />
+    <MESSAGE value="tested savings" />
+    <option name="LAST_COMMIT_MESSAGE" value="tested savings" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
@@ -525,54 +571,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TSP/NearestNeighbor.java">
+    <entry file="file://$PROJECT_DIR$/Input0Berlin52.tsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Input0st70.tsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1275">
+          <caret line="75" column="8" lean-forward="true" selection-start-line="6" selection-end-line="75" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TSP/K_Opt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TSP/Solution.java">
+    <entry file="file://$PROJECT_DIR$/Input0Burma14.tsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="66" column="57" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
-          <folding>
-            <element signature="e#1378#1379#0" expanded="true" />
-            <element signature="e#1423#1424#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TSP/Savings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5813#5822#0" expanded="true" />
-            <element signature="e#5919#5943#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2502#2512#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="217">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -580,6 +599,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TSP/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TSP/NearestNeighbor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TSP/Savings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="387" selection-start-line="387" selection-end-line="387" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="168" column="12" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

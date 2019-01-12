@@ -21,7 +21,7 @@ class Savings extends Solution{
             startCityIdx =  Main.rand.nextInt(Main.n);
         }
         else{
-            startCityIdx = 0;
+            startCityIdx = Main.startCity;
         }
 
         System.out.println("Starting City: " + startCityIdx);
@@ -113,7 +113,8 @@ class Savings extends Solution{
         //=============================================================
 
         System.out.println("Iterating Sorted Savings Array to Update Adjacency Lists");
-        for (Pair<Pair<Integer, Integer>, Float> entry: savings) {
+        while (!savings.isEmpty()) {
+            Pair<Pair<Integer, Integer>, Float> entry = savings.remove(Main.rand.nextInt(Main.USE_CANDIDATES));
             int i = entry.getKey().getKey();
             int j = entry.getKey().getValue();
 //            System.out.println();
@@ -150,6 +151,10 @@ class Savings extends Solution{
         if(startIdxArray.size()==2){
             buildTourArray();
             return;
+        }
+        else {
+            System.out.println("startIdxArray.size() = " + startIdxArray.size());
+            Main.savingsR++;
         }
 
 //        System.out.println("Before Testing start array size:");
@@ -276,15 +281,15 @@ class Savings extends Solution{
 
     private void printAdjacencyList(){
         for (int n1 = 0; n1 < Main.n; n1++) {
-            System.out.print(n1 + ": ");
+            System.out.print((n1+1) + ": ");
             for (int n2: adjacencyList.get(n1) ) {
-                System.out.print(n2 + " ");
+                System.out.print((n2+1) + " ");
             }
             System.out.println();
         }
         System.out.print("Start Array: ");
         for (int n2: startArray ) {
-            System.out.print(n2 + " ");
+            System.out.print((n2+1) + " ");
         }
         System.out.println();
     }

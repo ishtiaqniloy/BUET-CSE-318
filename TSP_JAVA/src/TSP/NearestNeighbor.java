@@ -18,7 +18,7 @@ class NearestNeighbor extends Solution {
             startCityIdx =  Main.rand.nextInt(Main.n);
         }
         else{
-            startCityIdx = 0;
+            startCityIdx = Main.startCity;
         }
 
         tourCityIdx.add(startCityIdx);
@@ -34,7 +34,7 @@ class NearestNeighbor extends Solution {
 
     }
 
-    private ArrayList<Pair<Integer, Float>> calculateCandidateNeighbors(int currentCityIdx){ //O(n*MAX_CANDIDATES) sort
+    private ArrayList<Pair<Integer, Float>> calculateCandidateNeighbors(int currentCityIdx){ //O(n*USE_CANDIDATES) sort
         ArrayList<Pair<Integer, Float>> candidates = new ArrayList<Pair<Integer, Float>>();
 
         //=============================================================
@@ -49,7 +49,7 @@ class NearestNeighbor extends Solution {
         //Gathering candidates
         //=============================================================
         double prevMin = -1;
-        for (int i = 0; i < Main.MAX_CANDIDATES; i++) {
+        for (int i = 0; i < Main.USE_CANDIDATES; i++) {
             float minVal = 999999999;
             int minIdx = -1;
 

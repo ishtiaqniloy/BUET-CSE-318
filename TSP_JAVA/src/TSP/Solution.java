@@ -19,6 +19,14 @@ public abstract class Solution {
         numberOfRoadsTravelled = 0;
     }
 
+    public int getStartCityIdx() {
+        return startCityIdx;
+    }
+
+    public void setStartCityIdx(int startCityIdx) {
+        this.startCityIdx = startCityIdx;
+    }
+
     public ArrayList<Integer> getTourCityIdx() {
         return tourCityIdx;
     }
@@ -64,13 +72,13 @@ public abstract class Solution {
     abstract void improve();
 
     void printConstruction(){
-        System.out.println("Start City = " + startCityIdx);
+        System.out.println("Start City = " + (startCityIdx +1));
         System.out.println("Total Distance = " + totalDistanceTravelled);
         System.out.println("Number of roads travelled = " + numberOfRoadsTravelled);
         System.out.println("Time Required For construction = " + constructionDuration +"ms");
         System.out.print("Printing city indices: ");
         for (int i = 0; i < tourCityIdx.size(); i++) {
-            System.out.print(tourCityIdx.get(i) + " ");
+            System.out.print((tourCityIdx.get(i)+1) + " ");
         }
         System.out.println();
         System.out.println();
@@ -114,6 +122,29 @@ public abstract class Solution {
 
         System.out.println("Check Solution : CORRECT SOLUTION!!!");
         return true;
+    }
+
+    Solution copySolution(){
+        Solution solution = new Solution() {
+            @Override
+            void construct() {
+                //Do Nothing
+            }
+
+            @Override
+            void improve() {
+                //Do Nothing
+            }
+        };
+
+        solution.startCityIdx = startCityIdx;
+        solution.tourCityIdx = new ArrayList<>(tourCityIdx);
+        solution.constructionDuration = constructionDuration;
+        solution.optimizationDuration = optimizationDuration;
+        solution.totalDistanceTravelled = getTotalDistanceTravelled();
+        solution.numberOfRoadsTravelled = numberOfRoadsTravelled;
+
+        return solution;
     }
 
 
