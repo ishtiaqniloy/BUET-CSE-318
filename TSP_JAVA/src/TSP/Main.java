@@ -8,9 +8,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static final int SIMPLE_ITR = 5;
-    public static final int RANDOM_ITR = 10;
-    public static final int MAX_CANDIDATES = 5;
+    public static final int SIMPLE_ITR = 5; //5
+    public static final int RANDOM_ITR = 10; //10
+    public static final int MAX_CANDIDATES = 5; //5
     public static final int MAX_OPT = 3;
     public static final Random rand = new Random();
 
@@ -19,7 +19,6 @@ public class Main {
     public static boolean RANDOMIZED_START = true;
     public static int USE_CANDIDATES = 1;
 
-    public static int savingsR=0;
     public static int constructionWrongSolution = 0;
     public static int optimizationWrongSolution = 0;
 
@@ -153,13 +152,12 @@ public class Main {
             }
 
             minSimpleSolution = solutions.get(minSimpleIdx);
-            maxSimpleSolution = solutions.get(minSimpleIdx);
+            maxSimpleSolution = solutions.get(maxSimpleIdx);
 
             //=============================================================
-            //FINDING BEST TOUR FROM START CITY
-            //=============================================================
-
             //Initializing variables for constructions from startCity
+            //=============================================================
+
             startCity = minSimpleSolution.getStartCityIdx();
             RANDOMIZED_START = false;
             USE_CANDIDATES = MAX_CANDIDATES;
@@ -178,6 +176,71 @@ public class Main {
 
 
             //=============================================================
+            //FINDING BEST TOUR FROM START CITY
+            //=============================================================
+
+
+            if(constructionChoice == 1 ){
+                //=============================================================
+                //Nearest Neighbor Heuristic Construction
+                //=============================================================
+                System.out.println("Starting Random Nearest Neighbor Heuristic Construction...");
+                System.out.println();
+
+                for (int i = 0; i < MAX_ITR; i++) {
+                    System.out.println("Running " + (i+1) + "th iteration...");
+                    Solution s = new NearestNeighbor();
+                    solutions.add(s);
+                    s.construct();
+                }
+
+            }
+            else if(constructionChoice == 2){
+                //=============================================================
+                //Savings Heuristic Construction
+                //=============================================================
+                System.out.println("Starting Random Savings Heuristic Construction...");
+                System.out.println("Start city is set to : " + (startCity+1));
+                System.out.println();
+
+                for (int i = 0; i < MAX_ITR; i++) {
+                    System.out.println("Running " + (i+1) + "th iteration...");
+                    Solution s = new Savings();
+                    solutions.add(s);
+                    s.construct();
+                }
+
+            }
+            else{
+                System.out.println("Wrong choice of Construction Heuristic");
+            }
+
+            for (int i = 0; i < MAX_ITR; i++) {
+                Solution s = solutions.get(i);
+
+                avgRandomDist += s.getTotalDistanceTravelled() / MAX_ITR;
+                avgRandomDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
+
+                if(s.getTotalDistanceTravelled() < minRandomDist){
+                    minRandomDist = s.getTotalDistanceTravelled();
+                    minRandomIdx = i;
+                }
+
+                if(s.getTotalDistanceTravelled() > maxRandomDist){
+                    maxRandomDist = s.getTotalDistanceTravelled();
+                    maxRandomIdx = i;
+                }
+
+                System.out.println("Printing " + (i+1) +"th solution of Greedy Simple Version...");
+                s.printConstruction();
+
+            }
+
+            minRandomSolution = solutions.get(minRandomIdx);
+            maxRandomSolution = solutions.get(maxRandomIdx);
+
+
+            //=============================================================
             //SHOWING RESULTS
             //=============================================================
 
@@ -191,11 +254,11 @@ public class Main {
             System.out.println("Best Solution in Greedy Simple Version:");
             minSimpleSolution.printConstruction();
 
-            System.out.println("Best Solution in Greedy Simple Version:");
+            System.out.println("Worst Solution in Greedy Simple Version:");
             maxSimpleSolution.printConstruction();
 
 
-            //GREEDY SIMPLE RESULT
+            //GREEDY RANDOM RESULT
             System.out.println("***FINAL RESULTS OF GREEDY RANDOMIZED VERSION****");
             System.out.println("Average Time required for construction in Greedy Randomized Version = " + avgRandomDuration + "ms");
             System.out.println("Average Distance Travelled in Greedy Randomized Version = " + avgRandomDist);
@@ -204,15 +267,12 @@ public class Main {
             System.out.println("Best Solution in Greedy Randomized Version:");
             minRandomSolution.printConstruction();
 
-            System.out.println("Best Solution in Greedy Randomized Version:");
+            System.out.println("Worst Solution in Greedy Randomized Version:");
             maxRandomSolution.printConstruction();
 
             System.out.println();
             System.out.println();
 
-
-
-            System.out.println("savingsR = " + savingsR);
 
             System.out.println("Number of Construction Wrong Solutions = " + constructionWrongSolution);
 

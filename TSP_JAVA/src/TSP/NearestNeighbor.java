@@ -36,6 +36,7 @@ class NearestNeighbor extends Solution {
 
     private ArrayList<Pair<Integer, Float>> calculateCandidateNeighbors(int currentCityIdx){ //O(n*USE_CANDIDATES) sort
         ArrayList<Pair<Integer, Float>> candidates = new ArrayList<Pair<Integer, Float>>();
+        ArrayList<Integer> takenCities = new ArrayList<Integer>();
 
         //=============================================================
         //Calculating all cities distance from current city
@@ -59,7 +60,7 @@ class NearestNeighbor extends Solution {
                 }
 
                 float val = distanceArray[j];
-                if(val < minVal && val >= prevMin && !candidates.contains(j)){
+                if(val < minVal && val >= prevMin && !takenCities.contains(j)){
                     minVal = val;
                     minIdx = j;
                 }
@@ -71,6 +72,7 @@ class NearestNeighbor extends Solution {
             }
 
             candidates.add(new Pair<>(minIdx, minVal) );
+            takenCities.add(minIdx);
             prevMin = minVal;
 
         }
@@ -90,8 +92,13 @@ class NearestNeighbor extends Solution {
         //=============================================================
         while(numberOfCitiesVisited!=Main.n){
             ArrayList<Pair<Integer, Float>> candidateCities = calculateCandidateNeighbors(currentCityIdx);
-
             int randIdx = Main.rand.nextInt(candidateCities.size());
+
+            System.out.print("Candidates are : ");
+            for (Pair<Integer, Float> entry: candidateCities) {
+                System.out.print(entry.getKey() + " ");
+            }
+            System.out.println();
 
             int nextCityIdx = candidateCities.get(randIdx).getKey();
             float nextCityDist = candidateCities.get(randIdx).getValue();
