@@ -4,6 +4,7 @@ import javafx.util.Pair;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Main {
     public static final int SIMPLE_ITR = 5; //5
     public static final int RANDOM_ITR = 10; //10
     public static final int MAX_CANDIDATES = 5; //5
-    public static final int MAX_OPT = 3;
+    public static final int OPT_CANDIDATES = 3;
     public static final Random rand = new Random();
 
 
@@ -167,11 +168,7 @@ public class Main {
 
             double avgRandomDist = 0;
             double avgRandomDuration = 0;
-            double minRandomDist = 999999999;
-            int minRandomIdx = -1;
             Solution minRandomSolution;
-            double maxRandomDist = -1;
-            int maxRandomIdx = -1;
             Solution maxRandomSolution;
 
 
@@ -215,29 +212,51 @@ public class Main {
                 System.out.println("Wrong choice of Construction Heuristic");
             }
 
+
+
+//            solutions.sort(new Comparator<Pair<Pair<Integer, Integer>, Float>>() {
+//                @Override
+//                public int compare(Pair<Pair<Integer, Integer>, Float> o2, Pair<Pair<Integer, Integer>, Float> o1) {
+//                    return Float.compare(o1.getValue(), o2.getValue()) ;
+//                }
+//            });
+
             for (int i = 0; i < MAX_ITR; i++) {
                 Solution s = solutions.get(i);
 
                 avgRandomDist += s.getTotalDistanceTravelled() / MAX_ITR;
                 avgRandomDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
 
-                if(s.getTotalDistanceTravelled() < minRandomDist){
-                    minRandomDist = s.getTotalDistanceTravelled();
-                    minRandomIdx = i;
-                }
-
-                if(s.getTotalDistanceTravelled() > maxRandomDist){
-                    maxRandomDist = s.getTotalDistanceTravelled();
-                    maxRandomIdx = i;
-                }
-
                 System.out.println("Printing " + (i+1) +"th solution of Greedy Simple Version...");
                 s.printConstruction();
 
             }
 
-            minRandomSolution = solutions.get(minRandomIdx);
-            maxRandomSolution = solutions.get(maxRandomIdx);
+            solutions.sort(new Comparator<Solution>() {     //to get best 3 solutions to optimize
+                @Override
+                public int compare(Solution o1, Solution o2) {
+                    return Double.compare(o1.getTotalDistanceTravelled(), o2.getTotalDistanceTravelled());
+
+                }
+            });
+
+            minRandomSolution = solutions.get(0);
+            maxRandomSolution = solutions.get(solutions.size()-1);
+
+
+            //=============================================================
+            //OPTIMIZE 2-OPT
+            //=============================================================
+
+           ArrayList<Solution> optCandidates = new ArrayList<Solution>();
+
+            for (int i = 0; i < OPT_CANDIDATES && i < solutions.size(); i++) {
+                optCandidates.add(new Two_Opt(solutions.get(i).copySolution()));
+                System.out.println("COST BEFORE IMPROVEMENT : " + optCandidates.get(i).getTotalDistanceTravelled());
+                optCandidates.get(i).improve();
+                optCandidates.get(i).printConstruction();
+            }
+
 
 
             //=============================================================
@@ -275,6 +294,7 @@ public class Main {
 
 
             System.out.println("Number of Construction Wrong Solutions = " + constructionWrongSolution);
+            System.out.println("Number of Optimization Wrong Solutions = " + optimizationWrongSolution);
 
 
         }catch (Exception e){

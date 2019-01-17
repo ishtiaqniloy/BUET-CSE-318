@@ -137,12 +137,12 @@ public abstract class Solution {
             }
         };
 
-        solution.startCityIdx = startCityIdx;
-        solution.tourCityIdx = new ArrayList<>(tourCityIdx);
-        solution.constructionDuration = constructionDuration;
-        solution.optimizationDuration = optimizationDuration;
+        solution.startCityIdx = getStartCityIdx();
+        solution.tourCityIdx = new ArrayList<>(getTourCityIdx());
+        solution.constructionDuration = getConstructionDuration();
+        solution.optimizationDuration = getOptimizationDuration();
         solution.totalDistanceTravelled = getTotalDistanceTravelled();
-        solution.numberOfRoadsTravelled = numberOfRoadsTravelled;
+        solution.numberOfRoadsTravelled = getNumberOfRoadsTravelled();
 
         return solution;
     }
