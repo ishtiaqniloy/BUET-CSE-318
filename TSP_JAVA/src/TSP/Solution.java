@@ -84,6 +84,19 @@ public abstract class Solution {
         System.out.println();
     }
 
+    void printOptimization(){
+        System.out.println("Start City = " + (startCityIdx +1));
+        System.out.println("Total Distance = " + totalDistanceTravelled);
+        System.out.println("Number of roads travelled = " + numberOfRoadsTravelled);
+        System.out.println("Time Required For optimization = " + optimizationDuration +"ms");
+        System.out.print("Printing city indices: ");
+        for (int i = 0; i < tourCityIdx.size(); i++) {
+            System.out.print((tourCityIdx.get(i)+1) + " ");
+        }
+        System.out.println();
+        System.out.println();
+    }
+
     public boolean checkSolution(){
         if(tourCityIdx.isEmpty()){
             System.out.println("Check Solution : Empty");

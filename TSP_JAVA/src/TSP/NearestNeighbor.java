@@ -94,11 +94,11 @@ class NearestNeighbor extends Solution {
             ArrayList<Pair<Integer, Float>> candidateCities = calculateCandidateNeighbors(currentCityIdx);
             int randIdx = Main.rand.nextInt(candidateCities.size());
 
-            System.out.print("Candidates are : ");
-            for (Pair<Integer, Float> entry: candidateCities) {
-                System.out.print(entry.getKey() + " ");
-            }
-            System.out.println();
+//            System.out.print("Candidates are : ");
+//            for (Pair<Integer, Float> entry: candidateCities) {
+//                System.out.print(entry.getKey() + " ");
+//            }
+//            System.out.println();
 
             int nextCityIdx = candidateCities.get(randIdx).getKey();
             float nextCityDist = candidateCities.get(randIdx).getValue();

@@ -24,10 +24,9 @@ public class Main {
     public static int optimizationWrongSolution = 0;
 
     public static int n;
+    public static double optimalResult;
     public static int startCity;
     public static ArrayList<Pair<Float, Float>> locations;
-
-    public static int k = 2;
 
     public static void main(String []args){
         System.out.println("Travelling Salesman Problem");
@@ -63,6 +62,7 @@ public class Main {
 //            }
 
             n = scanner.nextInt();
+            optimalResult = scanner.nextDouble();
             System.out.println(n + " cities in the problem.\nLocations are:");
 
             locations = new ArrayList<Pair<Float, Float>>();
@@ -227,7 +227,7 @@ public class Main {
                 avgRandomDist += s.getTotalDistanceTravelled() / MAX_ITR;
                 avgRandomDuration += s.getConstructionDuration()*1.0 / MAX_ITR;
 
-                System.out.println("Printing " + (i+1) +"th solution of Greedy Simple Version...");
+                System.out.println("Printing " + (i+1) +"th solution of Greedy Randomized Version...");
                 s.printConstruction();
 
             }
@@ -245,24 +245,95 @@ public class Main {
 
 
             //=============================================================
-            //OPTIMIZE 2-OPT
+            //OPTIMIZE 2-OPT BEST
             //=============================================================
 
-           ArrayList<Solution> optCandidates = new ArrayList<Solution>();
+            System.out.println("Starting Two-opt Best Improvement...");
+            System.out.println();
+
+            ArrayList<Solution> optCandidatesBest = new ArrayList<Solution>();
+            double avgKOptBestDist = 0;
+            double avgKOptBestDuration = 0;
+            Solution minKOptBestSolution;
+            Solution maxKOptBestSolution;
 
             for (int i = 0; i < OPT_CANDIDATES && i < solutions.size(); i++) {
-                optCandidates.add(new Two_Opt(solutions.get(i).copySolution()));
-                System.out.println("COST BEFORE IMPROVEMENT : " + optCandidates.get(i).getTotalDistanceTravelled());
-                optCandidates.get(i).improve();
-                optCandidates.get(i).printConstruction();
+                optCandidatesBest.add(new Two_Opt_Best(solutions.get(i).copySolution()));
+                System.out.println("COST BEFORE BEST IMPROVEMENT : " + optCandidatesBest.get(i).getTotalDistanceTravelled());
+                optCandidatesBest.get(i).improve();
+                optCandidatesBest.get(i).printOptimization();
             }
+
+            for (int i = 0; i < OPT_CANDIDATES; i++) {
+                Solution s = optCandidatesBest.get(i);
+
+                avgKOptBestDist += s.getTotalDistanceTravelled() / MAX_ITR;
+                avgKOptBestDuration += s.getOptimizationDuration()*1.0 / MAX_ITR;
+
+            }
+
+            optCandidatesBest.sort(new Comparator<Solution>() {
+                @Override
+                public int compare(Solution o1, Solution o2) {
+                    return Double.compare(o1.getTotalDistanceTravelled(), o2.getTotalDistanceTravelled());
+
+                }
+            });
+
+            minKOptBestSolution = optCandidatesBest.get(0);
+            maxKOptBestSolution = optCandidatesBest.get(optCandidatesBest.size()-1);
+
+
+            //=============================================================
+            //OPTIMIZE 2-OPT FIRST
+            //=============================================================
+
+            System.out.println("Starting Two-opt First Improvement...");
+            System.out.println();
+
+            ArrayList<Solution> optCandidatesFirst = new ArrayList<Solution>();
+            double avgKOptFirstDist = 0;
+            double avgKOptFirstDuration = 0;
+            Solution minKOptFirstSolution;
+            Solution maxKOptFirstSolution;
+
+
+            for (int i = 0; i < OPT_CANDIDATES && i < solutions.size(); i++) {
+                optCandidatesFirst.add(new Two_Opt_First(solutions.get(i).copySolution()));
+                System.out.println("COST BEFORE FIRST IMPROVEMENT : " + optCandidatesFirst.get(i).getTotalDistanceTravelled());
+                optCandidatesFirst.get(i).improve();
+                optCandidatesFirst.get(i).printOptimization();
+            }
+
+            for (int i = 0; i < OPT_CANDIDATES; i++) {
+                Solution s = optCandidatesFirst.get(i);
+
+                avgKOptFirstDist += s.getTotalDistanceTravelled() / MAX_ITR;
+                avgKOptFirstDuration += s.getOptimizationDuration()*1.0 / MAX_ITR;
+
+            }
+
+            optCandidatesFirst.sort(new Comparator<Solution>() {
+                @Override
+                public int compare(Solution o1, Solution o2) {
+                    return Double.compare(o1.getTotalDistanceTravelled(), o2.getTotalDistanceTravelled());
+
+                }
+            });
+
+            minKOptFirstSolution = optCandidatesFirst.get(0);
+            maxKOptFirstSolution = optCandidatesFirst.get(optCandidatesFirst.size()-1);
 
 
 
             //=============================================================
             //SHOWING RESULTS
             //=============================================================
-
+            System.out.println();
+            System.out.println();
+            System.out.println("**********************************************************************R E S U L T**********************************************************************");
+            System.out.println();
+            System.out.println();
 
             //GREEDY SIMPLE RESULT
             System.out.println("***FINAL RESULTS OF GREEDY SIMPLE VERSION****");
@@ -275,6 +346,8 @@ public class Main {
 
             System.out.println("Worst Solution in Greedy Simple Version:");
             maxSimpleSolution.printConstruction();
+
+            System.out.println();
 
 
             //GREEDY RANDOM RESULT
@@ -290,9 +363,41 @@ public class Main {
             maxRandomSolution.printConstruction();
 
             System.out.println();
+
+
+            //BEST IMPROVEMENT TWO OPT OPTIMIZATION RESULTS
+            System.out.println("***FINAL RESULTS OF BEST IMPROVEMENT TWO OPT OPTIMIZATION****");
+            System.out.println("Average Time required for optimization by Best Improvement version = " + avgKOptBestDuration + "ms");
+            System.out.println("Average Distance Travelled in optimization by Best Improvement version = " + avgKOptBestDist);
             System.out.println();
 
+            System.out.println("Best Solution in optimization by Best Improvement version:");
+            minKOptBestSolution.printOptimization();
 
+            System.out.println("Worst Solution in optimization by Best Improvement version:");
+            maxKOptBestSolution.printOptimization();
+
+
+            //FIRST IMPROVEMENT TWO OPT OPTIMIZATION RESULTS
+            System.out.println("***FINAL RESULTS OF FIRST IMPROVEMENT TWO OPT OPTIMIZATION****");
+            System.out.println("Average Time required for optimization by First Improvement Version = " + avgKOptFirstDuration + "ms");
+            System.out.println("Average Distance Travelled in optimization by First Improvement version  = " + avgKOptFirstDist);
+            System.out.println();
+
+            System.out.println("Best Solution in optimization by First Improvement version:");
+            minKOptFirstSolution.printOptimization();
+
+            System.out.println("Worst Solution in optimization by First Improvement version:");
+            maxKOptFirstSolution.printOptimization();
+
+
+            //Result Percentage
+            System.out.println("Actual Cost = " + optimalResult + ", Percentage = " + 100 + "%");
+            System.out.println("Best Improvement Cost = " + minKOptBestSolution.getTotalDistanceTravelled() + ", Percentage = " + 100*minKOptBestSolution.getTotalDistanceTravelled()/optimalResult + "%");
+            System.out.println("First Improvement Cost = " + minKOptFirstSolution.getTotalDistanceTravelled() + ", Percentage = " +  100*minKOptFirstSolution.getTotalDistanceTravelled()/optimalResult  + "%");
+
+            //checking correctness
+            System.out.println();
             System.out.println("Number of Construction Wrong Solutions = " + constructionWrongSolution);
             System.out.println("Number of Optimization Wrong Solutions = " + optimizationWrongSolution);
 
