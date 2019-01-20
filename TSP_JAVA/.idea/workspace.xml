@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="829c02fa-eb91-424a-a44d-a0655ce96d55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Input0pr76.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Input343.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TSP/Two_Opt_Best.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input0Berlin52.tsp" beforeDir="false" afterPath="$PROJECT_DIR$/Input0Berlin52.tsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input0Burma14.tsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input0st70.tsp" beforeDir="false" afterPath="$PROJECT_DIR$/Input0st70.tsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input10150.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input13584.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input14473.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input16862.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input194.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input22775.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input29.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input33708.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input3496.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input38.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input39603.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input4663.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input49687.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input50000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input6117.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input7146.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input734.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input929.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input980.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TSP/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/NearestNeighbor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TSP/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TSP/Two_Opt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TSP/Two_Opt_First.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,32 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
+            <state relative-caret-position="17">
               <caret line="229" column="89" selection-start-line="229" selection-start-column="89" selection-end-line="229" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Input.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Input0st70.tsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="71" column="8" selection-end-line="72" />
             </state>
           </provider>
         </entry>
@@ -168,7 +120,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -214,7 +166,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547921476025" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547921584795" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -297,7 +249,7 @@
       <workItem from="1547574414619" duration="811000" />
       <workItem from="1547644733738" duration="3700000" />
       <workItem from="1547753303890" duration="3875000" />
-      <workItem from="1547917877255" duration="3513000" />
+      <workItem from="1547917877255" duration="4299000" />
     </task>
     <task id="LOCAL-00001" summary="abstract class named Solution written">
       <created>1546875424234</created>
@@ -392,13 +344,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94967000" />
+    <option name="totallyTimeSpent" value="95753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -407,7 +359,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.57610476" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.57610476" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -707,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="229" column="89" selection-start-line="229" selection-start-column="89" selection-end-line="229" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TSP/Two_Opt_First.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -740,8 +682,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="484">
           <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TSP/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="229" column="89" selection-start-line="229" selection-start-column="89" selection-end-line="229" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
