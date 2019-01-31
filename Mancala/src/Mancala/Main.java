@@ -1,6 +1,13 @@
 /**
  * Two players are Player0 and Player1
  *
+ * Board is assumed as below:
+ *      [1][5]  [1][4]  [1][3]  [1][2]  [1][1]  [1][0]
+ *  [1][6]                                              [0][6]
+ *      [0][5]  [0][4]  [0][3]  [0][2]  [0][1]  [0][0]
+ *
+ * initially 4 stones in each bin, and storage is empty
+ *
  **/
 
 package Mancala;
@@ -22,33 +29,52 @@ public class Main {
         System.out.print("Give Player0 heuristic (1~4): ");
         int choice0 = scanner.nextInt();
         Heuristic player0Heuristic = getHeuristic(choice0);
-        Player player0 = new Player(0, new Heuristic1());
-
-
+        Player player0 = new Player(0, player0Heuristic);
 
         System.out.print("Give Player1 heuristic (1~4): ");
         int choice1 = scanner.nextInt();
         Heuristic player1Heuristic = getHeuristic(choice1);
-        Player player1 = new Player(1, new Heuristic1());
+        Player player1 = new Player(1, player1Heuristic);
+
 
         State currentState = getInitialState();
 
         currentState.printBoard();
+//        ArrayList<State> successors = currentState.generateSuccessors();
+//        for (State state : successors) {
+//            state.printBoard();
+//        }
 
-        ArrayList<State> successors = currentState.generateSuccessors();
-
-        for (State state : successors) {
-            state.printBoard();
+        while (!currentState.isTerminal()){
+            if(currentState.getTurn()==0){
+                currentState = player0.giveMove(currentState);
+                System.out.println("\nAfter Player0 move: ");
+            }
+            else {
+                currentState = player1.giveMove(currentState);
+                System.out.println("\nAfter Player1 move: ");
+            }
+            currentState.printBoard();
         }
 
-//        while (!currentState.isTerminal()){
-//            if(currentState.getTurn()==0){
-//                currentState = player0.giveMove();
-//            }
-//            else {
-//                currentState = player1.giveMove();
-//            }
-//        }
+        int winner = currentState.getWinner();
+
+        System.out.println("*****Terminal State Reached*****");
+        currentState.printBoard();
+
+        if(winner == 0){
+            System.out.println("Winner is Player0 with heuristic: " + choice0);
+        }
+        else if(winner == 1){
+            System.out.println("Winner is Player1 with heuristic: " + choice1);
+
+        }
+        else if(winner == 2){
+            System.out.println("Match Drawn!!!");
+        }
+        else{
+            System.out.println("Terminal state is invalid");
+        }
 
 
 
@@ -72,7 +98,7 @@ public class Main {
     }
 
     private static State getInitialState(){
-        State state = new State(1, null);
+        State state = new State(0, null);
         ///Initialize
         int [][]newBoard = new int[7][7];
 

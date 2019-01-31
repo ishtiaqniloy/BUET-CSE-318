@@ -61,16 +61,22 @@ public class State {
     }
 
     boolean isTerminal(){
+        boolean flag0 = true;
+        boolean flag1 = true;
         for (int i = 0; i < 6; i++) {
-            if(board[0][i] + board[1][i] > 0){
-                return false;
+            if(board[0][i] > 0){
+                flag0 = false;
+            }
+            if(board[1][i] > 0){
+                flag1 = false;
             }
         }
-        return true;
+
+        return  (flag0 || flag1);
     }
 
     void printBoard(){
-        System.out.println("\nPrinting Mancala board:");
+        System.out.println("Printing Mancala board with turn " + turn + " :");
 
         ///printing upper line
         for (int i = 5; i >=0 ; i--) {
@@ -85,7 +91,7 @@ public class State {
         for (int i = 0; i < 6 ; i++) {
             System.out.print("\t" + board[0][i]);
         }
-        System.out.println();
+        System.out.println("\n");
 
 
     }
@@ -130,14 +136,26 @@ public class State {
         }
     }
 
+    private void finalizeBoard(){
+        for (int i = 0; i < 6; i++) {
+            board[0][6] = board[0][6] + board[0][i];
+            board[0][i] = 0;
+            board[1][6] = board[1][6] + board[1][i];
+            board[1][i] = 0;
+        }
+
+    }
+
     public int getWinner(){
         if(!isTerminal()){  //invalid check
             return -1;
         }
-        else if(getStorageDiff(0)+getBinsDiff(0) > 0){  //winner: player0
+
+        finalizeBoard();
+        if(getStorageDiff(0) > 0){  //winner: player0
             return 0;
         }
-        else if(getStorageDiff(1)+getBinsDiff(1) > 0){ //winner: player1
+        else if(getStorageDiff(1) > 0){ //winner: player1
             return 1;
         }
         else{   //draw
@@ -176,10 +194,10 @@ public class State {
                 stone--;
 
                 if(stone==0){ //last stone placed
-                    if (row == turn && tempBoard[row][col] == 1 && tempBoard[row^1][col] > 0){  //last stone falls in empty bin and opposite bin has stones
-                        tempBoard[row][6] = tempBoard[row][6]+tempBoard[row][col]+tempBoard[row^1][col];
+                    if (row == turn && col < 6 && tempBoard[row][col] == 1 && tempBoard[row^1][5-col] > 0){  //last stone falls in empty bin and opposite bin has stones
+                        tempBoard[row][6] = tempBoard[row][6]+tempBoard[row][col]+tempBoard[row^1][5-col];
                         tempBoard[row][col] = 0;
-                        tempBoard[row^1][col] = 0;
+                        tempBoard[row^1][5-col] = 0;
 //                        System.out.println("Capturing opposite stones");
                     }
                     else if(row == turn && col == 6){  //last stone falls in storage
