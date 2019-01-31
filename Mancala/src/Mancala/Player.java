@@ -42,31 +42,37 @@ public class Player{
         if(depth == 0 || state.isTerminal()){
             return new Pair<State, Integer>(state,heuristic.evaluateState(state, playerNumber));
         }
-        else if(maximizingPlayer){
+
+        ArrayList<State> children = state.generateSuccessors();
+
+        if(maximizingPlayer){
             Pair<State, Integer> maxPair = new Pair<State, Integer>(null, -999999); ///?
-            ArrayList<State> children = state.generateSuccessors();
-            for (State child:children){
+            while (children.size()>0){
+                State child = children.remove(0);
                 Pair<State, Integer> tempPair = minimax(child, depth-1, child.getTurn()==playerNumber);
                 if(tempPair.getValue() > maxPair.getValue()){
                     maxPair = tempPair;
                 }
+                child = null;
             }
-
             if(maxPair.getKey()==null){
                 System.out.println("Returning null from minimax elseif at depth = " + depth); ///?
                 state.printBoard();
             }
 
+            children=null;
+            state.clearSuccessors();
             return maxPair;
         }
         else{
             Pair<State, Integer> minPair = new Pair<State, Integer>(null, 999999); ///?
-            ArrayList<State> children = state.generateSuccessors();
-            for (State child:children){
+            while (children.size()>0){
+                State child = children.remove(0);
                 Pair<State, Integer> tempPair = minimax(child, depth-1, child.getTurn()==playerNumber);
                 if(tempPair.getValue() < minPair.getValue()){
                     minPair = tempPair;
                 }
+                child = null;
             }
 
             if(minPair.getKey()==null){
@@ -74,6 +80,8 @@ public class Player{
                 state.printBoard();
             }
 
+            children=null;
+            state.clearSuccessors();
             return minPair;
         }
     }

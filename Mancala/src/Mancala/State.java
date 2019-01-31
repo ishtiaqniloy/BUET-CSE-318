@@ -13,7 +13,7 @@ public class State {
         this.turn = turn;
 
         this.board = new int[7][7];
-        this.successors = new ArrayList<State>();
+        //this.successors = new ArrayList<State>();
 
         this.parent = p;
     }
@@ -26,7 +26,7 @@ public class State {
         this.turn = turn;
     }
 
-    int[][] getBoard() {
+    private int[][] getBoard() {
         int [][]newBoard = new int[7][7];
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
@@ -44,15 +44,32 @@ public class State {
         }
     }
 
+    public void clearBoard(){
+        board = null;
+    }
+
     public ArrayList<State> getSuccessors() {
         return new ArrayList<State>(successors);
     }
 
-    public void setSuccessors(ArrayList<State> successors) {
-        this.successors = new ArrayList<State>(successors);
+    private void setSuccessors(ArrayList<State> successors) {
+        if(successors==null){
+            this.successors = new ArrayList<State>();
+        }
+        else {
+            this.successors = new ArrayList<State>(successors);
+        }
     }
 
-    public State getParent() {
+    void clearSuccessors(){
+        if(successors!=null){
+            successors.clear();
+        }
+
+        successors = null;
+    }
+
+    State getParent() {
         return parent;
     }
 
@@ -146,7 +163,7 @@ public class State {
 
     }
 
-    public int getWinner(){
+    int getWinner(){
         if(!isTerminal()){  //invalid check
             return -1;
         }
@@ -163,7 +180,7 @@ public class State {
         }
     }
 
-    public ArrayList<State> generateSuccessors(){
+    ArrayList<State> generateSuccessors(){
         ArrayList<State> tempSuccessors = new ArrayList<State>();
 
         for (int i = 0; i < 6; i++) {

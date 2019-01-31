@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static final int MINIMAX_SEARCH_DEPTH = 5;
+    public static final int MINIMAX_SEARCH_DEPTH = 7;
 
 
     public static void main(String []args){
