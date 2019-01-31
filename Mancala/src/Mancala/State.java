@@ -3,13 +3,13 @@ package Mancala;
 import java.util.ArrayList;
 
 public class State {
-    int turn;
-    int [][]board;
-    ArrayList<State> successors;
+    private int turn;
+    private int [][]board;
+    private ArrayList<State> successors;
 
-    State parent;
+    private State parent;
 
-    public State(int turn, State p) {
+    State(int turn, State p) {
         this.turn = turn;
 
         this.board = new int[7][7];
@@ -18,7 +18,7 @@ public class State {
         this.parent = p;
     }
 
-    public int getTurn() {
+    int getTurn() {
         return turn;
     }
 
@@ -50,6 +50,14 @@ public class State {
 
     public void setSuccessors(ArrayList<State> successors) {
         this.successors = new ArrayList<State>(successors);
+    }
+
+    public State getParent() {
+        return parent;
+    }
+
+    public void setParent(State parent) {
+        this.parent = parent;
     }
 
     boolean isTerminal(){
@@ -87,22 +95,22 @@ public class State {
     }
 
     public int getBinsDiff(int playerNumber){
-        int sum = 0;
+        int diff = 0;
         for (int i = 0; i < 6; i++) {
-            sum += board[playerNumber][i] - board[playerNumber^1][i];
+            diff += board[playerNumber][i] - board[playerNumber^1][i];
         }
 
-        return sum;
+        return diff;
     }
 
     public int extraTurn(int playerNumber){
         if(parent==null){
             return 0;
         }
-        else if(parent.getTurn()==playerNumber && this.getTurn()==playerNumber){
+        else if(parent.getTurn()==playerNumber && this.getTurn()==playerNumber){ //player gets an extra turn
             return 1;
         }
-        else if(parent.getTurn()==this.getTurn()){
+        else if(parent.getTurn()==this.getTurn()){  //opponent gets an extra turn
             return -1;
         }
         else {
@@ -114,10 +122,85 @@ public class State {
         if(parent==null){
             return this.board[playerNumber][6];
         }
-        else{
+        else if(parent.getTurn() == playerNumber){  //parent.turn represents who captured stones to reach this state
             return (this.board[playerNumber][6] - parent.board[playerNumber][6]);
+        }
+        else{   //negative means this turn is adverse for player
+            return -(this.board[playerNumber^1][6] - parent.board[playerNumber^1][6]);
         }
     }
 
+    public int getWinner(){
+        if(!isTerminal()){  //invalid check
+            return -1;
+        }
+        else if(getStorageDiff(0)+getBinsDiff(0) > 0){  //winner: player0
+            return 0;
+        }
+        else if(getStorageDiff(1)+getBinsDiff(1) > 0){ //winner: player1
+            return 1;
+        }
+        else{   //draw
+            return 2;
+        }
+    }
+
+    public ArrayList<State> generateSuccessors(){
+        ArrayList<State> tempSuccessors = new ArrayList<State>();
+
+        for (int i = 0; i < 6; i++) {
+            if(board[turn][i] <=0){
+                continue;
+            }
+
+            int stone = board[turn][i];
+            int row = turn;
+            int col = i;
+
+            int [][]tempBoard = getBoard();
+            tempBoard[turn][i] = 0;
+
+            int tempTurn = turn^1;
+
+            while (stone>0){
+                if(col==6){
+                    col=0;
+                    row ^= 1;
+                }
+                else {
+                    col++;
+                }
+
+                tempBoard[row][col] = tempBoard[row][col]+1;
+
+                stone--;
+
+                if(stone==0){ //last stone placed
+                    if (row == turn && tempBoard[row][col] == 1 && tempBoard[row^1][col] > 0){  //last stone falls in empty bin and opposite bin has stones
+                        tempBoard[row][6] = tempBoard[row][6]+tempBoard[row][col]+tempBoard[row^1][col];
+                        tempBoard[row][col] = 0;
+                        tempBoard[row^1][col] = 0;
+//                        System.out.println("Capturing opposite stones");
+                    }
+                    else if(row == turn && col == 6){  //last stone falls in storage
+                        tempTurn = turn;
+//                        System.out.println("Found extra turn");
+                    }
+                }
+
+            }
+
+            State tempState = new State(tempTurn, this);
+            tempState.setBoard(tempBoard);
+
+            tempSuccessors.add(tempState);
+
+
+        }
+
+
+        setSuccessors(tempSuccessors);
+        return tempSuccessors;
+    }
 
 }

@@ -22,6 +22,6 @@ public class Heuristic2 implements Heuristic {
     @Override
     public int evaluateState(State state, int playerNumber) {
 
-        return 0;
+        return w1*state.getStorageDiff(playerNumber)+w2*state.getBinsDiff(playerNumber);
     }
 }

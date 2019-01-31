@@ -14,7 +14,7 @@ public class Player{
     }
 
     State giveMove(){
-        State state = new State(0);
+        State state = new State(0, null);
 
 
 

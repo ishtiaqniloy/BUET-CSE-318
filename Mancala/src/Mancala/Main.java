@@ -7,6 +7,7 @@ package Mancala;
 
 import Heuristics.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -34,14 +35,20 @@ public class Main {
 
         currentState.printBoard();
 
-        while (!currentState.isTerminal()){
-            if(currentState.getTurn()==0){
-                currentState = player0.giveMove();
-            }
-            else {
-                currentState = player1.giveMove();
-            }
+        ArrayList<State> successors = currentState.generateSuccessors();
+
+        for (State state : successors) {
+            state.printBoard();
         }
+
+//        while (!currentState.isTerminal()){
+//            if(currentState.getTurn()==0){
+//                currentState = player0.giveMove();
+//            }
+//            else {
+//                currentState = player1.giveMove();
+//            }
+//        }
 
 
 
@@ -65,7 +72,7 @@ public class Main {
     }
 
     private static State getInitialState(){
-        State state = new State(0, null);
+        State state = new State(1, null);
         ///Initialize
         int [][]newBoard = new int[7][7];
 
