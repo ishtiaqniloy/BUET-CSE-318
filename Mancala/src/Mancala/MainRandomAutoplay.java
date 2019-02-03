@@ -28,25 +28,33 @@ public class MainRandomAutoplay {
     public static void main(String []args){
         System.out.println("******Welcome to Mancala Random Autoplay******");
 
-        int player0Win = 0;
-        int player1Win = 0;
+        int choice0Win = 0;
+        int choice1Win = 0;
         int draw = 0;
 
-        System.out.print("Give Player0 heuristic (1~4): ");
+        System.out.print("Give 2 heuristics to compare (1~5): ");
         int choice0 = scanner.nextInt();
-
-
-        System.out.print("Give Player1 heuristic (1~4): ");
         int choice1 = scanner.nextInt();
 
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < MAX_AUTOPLAY; i++) {
             System.out.println("\n*****AUTOPLAY NUMBER = " + (i+1) + "*****");
 
-            Heuristic player0Heuristic = getHeuristicWithRandomValues(choice0);
+            int player0HeuristicNum = choice0;
+            int player1HeuristicNum = choice1;
+
+            int invert = random.nextInt(2);     //make statistics independent of which heuristic is given first
+            if(invert==1){
+                player0HeuristicNum = choice1;
+                player1HeuristicNum = choice0;
+            }
+
+            System.out.println("Invert : " + invert);
+
+            Heuristic player0Heuristic = getHeuristicWithRandomValues(player0HeuristicNum);
             Player player0 = new Player(0, player0Heuristic);
 
-            Heuristic player1Heuristic = getHeuristicWithRandomValues(choice1);
+            Heuristic player1Heuristic = getHeuristicWithRandomValues(player1HeuristicNum);
             Player player1 = new Player(1, player1Heuristic);
 
             State currentState = getInitialState();
@@ -76,11 +84,21 @@ public class MainRandomAutoplay {
 
                 if(winner == 0){
                     System.out.println("Player0 is Winner with heuristic: " + choice0);
-                    player0Win++;
+                    if(player0HeuristicNum==choice0){
+                        choice0Win++;
+                    }
+                    else {
+                        choice1Win++;
+                    }
                 }
                 else if(winner == 1){
                     System.out.println("Player1 is Winner with heuristic: " + choice1);
-                    player1Win++;
+                    if(player1HeuristicNum==choice0){
+                        choice0Win++;
+                    }
+                    else {
+                        choice1Win++;
+                    }
 
                 }
                 else if(winner == 2){
@@ -96,8 +114,8 @@ public class MainRandomAutoplay {
         long endTime = System.currentTimeMillis();
 
         System.out.println();
-        System.out.println("Heuristic " + choice0 + " Win = " + player0Win + " Win Ratio = " + (100.0*player0Win/MAX_AUTOPLAY));
-        System.out.println("Heuristic " + choice1 + " Win = " + player1Win + " Win Ratio = " + (100.0*player1Win/MAX_AUTOPLAY));
+        System.out.println("Heuristic " + choice0 + " Win = " + choice0Win + " Win Ratio = " + (100.0*choice0Win/MAX_AUTOPLAY));
+        System.out.println("Heuristic " + choice1 + " Win = " + choice1Win + " Win Ratio = " + (100.0*choice1Win/MAX_AUTOPLAY));
         System.out.println("Draw = " + draw + " Draw Ratio = " + (100.0*draw/MAX_AUTOPLAY));
         System.out.println("Average Time Required = " +  (1.0*(endTime-startTime)/MAX_AUTOPLAY) + " ms");
 
@@ -116,7 +134,7 @@ public class MainRandomAutoplay {
             case 2:
                 w1 = random.nextInt(MAX_WEIGHT);
                 w2 = random.nextInt(MAX_WEIGHT);
-                System.out.println("w1 and w2: "+ w1 + " " + w2);
+                System.out.println("Heuristic 2 w1 and w2: "+ w1 + " " + w2);
 
                 return new Heuristic2(w1, w2);
 
@@ -124,7 +142,7 @@ public class MainRandomAutoplay {
                 w1 = random.nextInt(MAX_WEIGHT);
                 w2 = random.nextInt(MAX_WEIGHT);
                 w3 = random.nextInt(MAX_WEIGHT);
-                System.out.println("w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
+                System.out.println("Heuristic 3 w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
 
                 return new Heuristic3(w1, w2, w3);
 
@@ -133,7 +151,7 @@ public class MainRandomAutoplay {
                 w2 = random.nextInt(MAX_WEIGHT);
                 w3 = random.nextInt(MAX_WEIGHT);
                 w4 = random.nextInt(MAX_WEIGHT);
-                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+                System.out.println("Heuristic 4 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic4(w1, w2, w3, w4);
 
@@ -142,7 +160,7 @@ public class MainRandomAutoplay {
                 w2 = random.nextInt(MAX_WEIGHT);
                 w3 = random.nextInt(MAX_WEIGHT);
                 w4 = random.nextInt(MAX_WEIGHT);
-                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+                System.out.println("Heuristic 5 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic5(w1, w2, w3, w4);
 

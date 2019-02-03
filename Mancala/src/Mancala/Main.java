@@ -30,12 +30,12 @@ public class Main {
 
 
 
-        System.out.print("Give Player0 heuristic (1~4): ");
+        System.out.print("Give Player0 heuristic (1~5): ");
         int choice0 = scanner.nextInt();
         Heuristic player0Heuristic = getHeuristic(choice0);
         Player player0 = new Player(0, player0Heuristic);
 
-        System.out.print("Give Player1 heuristic (1~4): ");
+        System.out.print("Give Player1 heuristic (1~5): ");
         int choice1 = scanner.nextInt();
         Heuristic player1Heuristic = getHeuristic(choice1);
         Player player1 = new Player(1, player1Heuristic);
@@ -95,7 +95,7 @@ public class Main {
                 System.out.print("Enter values of w1 and w2: ");
                 w1 = scanner.nextInt();
                 w2 = scanner.nextInt();
-                System.out.println("w1 and w2: "+ w1 + " " + w2);
+                System.out.println("Heuristic 2 w1 and w2: "+ w1 + " " + w2);
 
                 return new Heuristic2(w1, w2);
 
@@ -104,7 +104,7 @@ public class Main {
                 w1 = scanner.nextInt();
                 w2 = scanner.nextInt();
                 w3 = scanner.nextInt();
-                System.out.println("w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
+                System.out.println("Heuristic 3 w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
 
                 return new Heuristic3(w1, w2, w3);
 
@@ -114,7 +114,7 @@ public class Main {
                 w2 = scanner.nextInt();
                 w3 = scanner.nextInt();
                 w4 = scanner.nextInt();
-                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+                System.out.println("Heuristic 4 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic4(w1, w2, w3, w4);
 
@@ -124,7 +124,7 @@ public class Main {
                 w2 = scanner.nextInt();
                 w3 = scanner.nextInt();
                 w4 = scanner.nextInt();
-                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+                System.out.println("Heuristic 5 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic5(w1, w2, w3, w4);
 

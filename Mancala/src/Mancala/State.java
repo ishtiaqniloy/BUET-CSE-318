@@ -126,6 +126,16 @@ public class State {
         return diff;
     }
 
+    public int getCloseToStorageDiff(int playerNumber){
+        int diff = 0;
+
+        for (int i = 0; i < 6; i++) {
+            diff += (6-i)*board[playerNumber][i] - (i+1)*board[playerNumber^1][i];
+        }
+
+        return diff;
+    }
+
     public int extraTurn(int playerNumber){
         if(parent==null){
             return 0;
@@ -151,16 +161,6 @@ public class State {
         else{   //negative means this turn is adverse for player
             return -(this.board[playerNumber^1][6] - parent.board[playerNumber^1][6]);
         }
-    }
-
-    public int getCloseToStorage(int playerNumber){
-        int diff = 0;
-
-        for (int i = 0; i < 6; i++) {
-            diff += (6-i)*board[playerNumber][i] - (i+1)*board[playerNumber^1][i];
-        }
-
-        return diff;
     }
 
     private void finalizeBoard(){

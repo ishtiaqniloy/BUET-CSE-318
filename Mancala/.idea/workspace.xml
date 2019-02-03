@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c22d5fa-274f-44b2-a835-4c6bbfb4cd9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristics/Heuristic2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristics/Heuristic3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristics/Heuristic4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mancala/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mancala/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mancala/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/State.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="129" lean-forward="true" selection-start-line="119" selection-end-line="129" />
+            <state relative-caret-position="357">
+              <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -38,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="144" column="96" selection-start-line="144" selection-start-column="96" selection-end-line="144" selection-end-column="96" />
+            <state relative-caret-position="393">
+              <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -50,28 +46,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic4.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mancala/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+            <state relative-caret-position="393">
+              <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
             </state>
           </provider>
         </entry>
@@ -79,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mancala/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="162" column="107" selection-start-line="162" selection-start-column="107" selection-end-line="162" selection-end-column="107" />
+            <state relative-caret-position="1853">
+              <caret line="166" column="29" lean-forward="true" selection-start-line="166" selection-start-column="29" selection-end-line="166" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#minimax#0;class#Player#0" />
@@ -118,8 +96,8 @@
         <option value="$PROJECT_DIR$/src/Heuristics/Heuristic2.java" />
         <option value="$PROJECT_DIR$/src/Heuristics/Heuristic3.java" />
         <option value="$PROJECT_DIR$/src/Heuristics/Heuristic4.java" />
-        <option value="$PROJECT_DIR$/src/Mancala/State.java" />
         <option value="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" />
+        <option value="$PROJECT_DIR$/src/Mancala/State.java" />
         <option value="$PROJECT_DIR$/src/Mancala/Main.java" />
         <option value="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" />
       </list>
@@ -173,7 +151,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549185137313" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549185989651" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/7 - Thread" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -243,7 +221,7 @@
       <workItem from="1548877077604" duration="16474000" />
       <workItem from="1548962186842" duration="8743000" />
       <workItem from="1549024407851" duration="1893000" />
-      <workItem from="1549182217858" duration="2846000" />
+      <workItem from="1549182217858" duration="3697000" />
     </task>
     <task id="LOCAL-00001" summary="Heuristics and State functions written">
       <created>1548950277052</created>
@@ -273,11 +251,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549026262642</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Autoplay and Heuruistic5 added">
+      <created>1549185188832</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1549185188832</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29956000" />
+    <option name="totallyTimeSpent" value="30807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -292,7 +277,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.88216037" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.801964" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -353,7 +338,8 @@
     <MESSAGE value="done without pruning. testing required" />
     <MESSAGE value="memory optimized" />
     <MESSAGE value="pruning added. testing and experimentation required" />
-    <option name="LAST_COMMIT_MESSAGE" value="pruning added. testing and experimentation required" />
+    <MESSAGE value="Autoplay and Heuruistic5 added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Autoplay and Heuruistic5 added" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic.java">
@@ -395,24 +381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mancala/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mancala/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="162" column="107" selection-start-line="162" selection-start-column="107" selection-end-line="162" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#minimax#0;class#Player#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic5.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -420,10 +388,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mancala/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mancala/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="166" column="29" lean-forward="true" selection-start-line="166" selection-start-column="29" selection-end-line="166" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#minimax#0;class#Player#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="129" lean-forward="true" selection-start-line="119" selection-end-line="129" />
+        <state relative-caret-position="357">
+          <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -434,8 +420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="144" column="96" selection-start-line="144" selection-start-column="96" selection-end-line="144" selection-end-column="96" />
+        <state relative-caret-position="393">
+          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
