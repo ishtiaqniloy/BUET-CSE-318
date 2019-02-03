@@ -153,6 +153,16 @@ public class State {
         }
     }
 
+    public int getCloseToStorage(int playerNumber){
+        int diff = 0;
+
+        for (int i = 0; i < 6; i++) {
+            diff += (6-i)*board[playerNumber][i] - (i+1)*board[playerNumber^1][i];
+        }
+
+        return diff;
+    }
+
     private void finalizeBoard(){
         for (int i = 0; i < 6; i++) {
             board[0][6] = board[0][6] + board[0][i];

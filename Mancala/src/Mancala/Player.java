@@ -129,7 +129,7 @@ public class Player{
                 }
 
                 if(beta <= alpha && children.size()>0){  ///pruning condition
-                    System.out.println("Pruning " + children.size() + " nodes at depth = " + depth);
+/**                    System.out.println("Pruning " + children.size() + " nodes at depth = " + depth); **/
                     break;
                 }
 
@@ -160,7 +160,7 @@ public class Player{
                 }
 
                 if(beta <= alpha && children.size()>0){  ///pruning condition
-                    System.out.println("Pruning " + children.size() + " nodes at depth = " + depth);
+/**                    System.out.println("Pruning " + children.size() + " nodes at depth = " + depth); **/
                     break;
                 }
 

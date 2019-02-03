@@ -15,16 +15,20 @@ package Mancala;
 import Heuristics.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
+@SuppressWarnings("Duplicates")
 public class Main {
     public static final int MINIMAX_SEARCH_DEPTH = 7;
-
+    public static final int MAX_WEIGHT = 15;
+    public static final Scanner scanner = new Scanner(System.in);
+    public static final Random random = new Random();
 
     public static void main(String []args){
         System.out.println("******Welcome to Mancala******");
 
-        Scanner scanner = new Scanner(System.in);
+
 
         System.out.print("Give Player0 heuristic (1~4): ");
         int choice0 = scanner.nextInt();
@@ -63,10 +67,10 @@ public class Main {
         currentState.printBoard();
 
         if(winner == 0){
-            System.out.println("Winner is Player0 with heuristic: " + choice0);
+            System.out.println("Player0 is Winner with heuristic: " + choice0);
         }
         else if(winner == 1){
-            System.out.println("Winner is Player1 with heuristic: " + choice1);
+            System.out.println("Player1 is Winner with heuristic: " + choice1);
 
         }
         else if(winner == 2){
@@ -82,11 +86,48 @@ public class Main {
 
 
     private static Heuristic getHeuristic(int choice){
+        int w1, w2, w3, w4;
         switch (choice){
-            case 1: return new Heuristic1();
-            case 2: return new Heuristic2();
-            case 3: return new Heuristic3();
-            case 4: return new Heuristic4();
+            case 1:
+                return new Heuristic1();
+
+            case 2:
+                System.out.print("Enter values of w1 and w2: ");
+                w1 = scanner.nextInt();
+                w2 = scanner.nextInt();
+                System.out.println("w1 and w2: "+ w1 + " " + w2);
+
+                return new Heuristic2(w1, w2);
+
+            case 3:
+                System.out.print("Enter values of w1, w2 and w3: ");
+                w1 = scanner.nextInt();
+                w2 = scanner.nextInt();
+                w3 = scanner.nextInt();
+                System.out.println("w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
+
+                return new Heuristic3(w1, w2, w3);
+
+            case 4:
+                System.out.print("Enter values of w1, w2, w3 and w4: ");
+                w1 = scanner.nextInt();
+                w2 = scanner.nextInt();
+                w3 = scanner.nextInt();
+                w4 = scanner.nextInt();
+                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+
+                return new Heuristic4(w1, w2, w3, w4);
+
+            case 5:
+                System.out.print("Enter values of w1, w2, w3 and w4: ");
+                w1 = scanner.nextInt();
+                w2 = scanner.nextInt();
+                w3 = scanner.nextInt();
+                w4 = scanner.nextInt();
+                System.out.println("w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
+
+                return new Heuristic5(w1, w2, w3, w4);
+
             default:
                 System.out.println("Wrong choice of heuristic. Default heuristic set...");
                 return new Heuristic1();
