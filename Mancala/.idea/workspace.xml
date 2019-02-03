@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1c22d5fa-274f-44b2-a835-4c6bbfb4cd9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heuristics/Heuristic5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mancala/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mancala/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/State.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +18,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
+            <state relative-caret-position="-1479">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
                 <element signature="e#437#468#0" expanded="true" />
               </folding>
             </state>
@@ -34,12 +31,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+            <state relative-caret-position="374">
+              <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#437#468#0" expanded="true" />
+                <element signature="e#409#440#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,7 +148,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549185989651" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549186673557" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/7 - Thread" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -221,7 +218,7 @@
       <workItem from="1548877077604" duration="16474000" />
       <workItem from="1548962186842" duration="8743000" />
       <workItem from="1549024407851" duration="1893000" />
-      <workItem from="1549182217858" duration="3697000" />
+      <workItem from="1549182217858" duration="4248000" />
     </task>
     <task id="LOCAL-00001" summary="Heuristics and State functions written">
       <created>1548950277052</created>
@@ -258,11 +255,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549185188832</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Autoplay is made independent of which is given at first">
+      <created>1549186044507</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1549186044507</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30807000" />
+    <option name="totallyTimeSpent" value="31358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -277,7 +281,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.801964" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6988543" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -339,7 +343,8 @@
     <MESSAGE value="memory optimized" />
     <MESSAGE value="pruning added. testing and experimentation required" />
     <MESSAGE value="Autoplay and Heuruistic5 added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Autoplay and Heuruistic5 added" />
+    <MESSAGE value="Autoplay is made independent of which is given at first" />
+    <option name="LAST_COMMIT_MESSAGE" value="Autoplay is made independent of which is given at first" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic.java">
@@ -408,11 +413,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="126" column="47" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
+        <state relative-caret-position="-1479">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
             <element signature="e#437#468#0" expanded="true" />
           </folding>
         </state>
@@ -420,12 +424,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+        <state relative-caret-position="374">
+          <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#437#468#0" expanded="true" />
+            <element signature="e#409#440#0" expanded="true" />
           </folding>
         </state>
       </provider>

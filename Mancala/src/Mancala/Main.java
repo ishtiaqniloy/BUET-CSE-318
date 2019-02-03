@@ -14,16 +14,12 @@ package Mancala;
 
 import Heuristics.*;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 @SuppressWarnings("Duplicates")
 public class Main {
     public static final int MINIMAX_SEARCH_DEPTH = 7;
-    public static final int MAX_WEIGHT = 15;
     public static final Scanner scanner = new Scanner(System.in);
-    public static final Random random = new Random();
 
     public static void main(String []args){
         System.out.println("******Welcome to Mancala******");

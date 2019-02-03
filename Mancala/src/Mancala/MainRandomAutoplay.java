@@ -14,7 +14,6 @@ package Mancala;
 
 import Heuristics.*;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,7 +42,11 @@ public class MainRandomAutoplay {
             int player0HeuristicNum = choice0;
             int player1HeuristicNum = choice1;
 
-            int invert = random.nextInt(2);     //make statistics independent of which heuristic is given first
+            int invert = 0;
+            if(choice0!=choice1){
+                invert = random.nextInt(2);     //make statistics independent of which heuristic is given first
+            }
+
             if(invert==1){
                 player0HeuristicNum = choice1;
                 player1HeuristicNum = choice0;
@@ -84,7 +87,7 @@ public class MainRandomAutoplay {
 
                 if(winner == 0){
                     System.out.println("Player0 is Winner with heuristic: " + choice0);
-                    if(player0HeuristicNum==choice0){
+                    if(invert==0){
                         choice0Win++;
                     }
                     else {
@@ -93,7 +96,7 @@ public class MainRandomAutoplay {
                 }
                 else if(winner == 1){
                     System.out.println("Player1 is Winner with heuristic: " + choice1);
-                    if(player1HeuristicNum==choice0){
+                    if(invert==1){
                         choice0Win++;
                     }
                     else {
@@ -132,34 +135,34 @@ public class MainRandomAutoplay {
                 return new Heuristic1();
 
             case 2:
-                w1 = random.nextInt(MAX_WEIGHT);
-                w2 = random.nextInt(MAX_WEIGHT);
+                w1 = random.nextInt(MAX_WEIGHT)+1;
+                w2 = random.nextInt(MAX_WEIGHT)+1;
                 System.out.println("Heuristic 2 w1 and w2: "+ w1 + " " + w2);
 
                 return new Heuristic2(w1, w2);
 
             case 3:
-                w1 = random.nextInt(MAX_WEIGHT);
-                w2 = random.nextInt(MAX_WEIGHT);
-                w3 = random.nextInt(MAX_WEIGHT);
+                w1 = random.nextInt(MAX_WEIGHT)+1;
+                w2 = random.nextInt(MAX_WEIGHT)+1;
+                w3 = random.nextInt(MAX_WEIGHT)+1;
                 System.out.println("Heuristic 3 w1, w2 and w3: " + w1 + " " + w2 + " " + w3);
 
                 return new Heuristic3(w1, w2, w3);
 
             case 4:
-                w1 = random.nextInt(MAX_WEIGHT);
-                w2 = random.nextInt(MAX_WEIGHT);
-                w3 = random.nextInt(MAX_WEIGHT);
-                w4 = random.nextInt(MAX_WEIGHT);
+                w1 = random.nextInt(MAX_WEIGHT)+1;
+                w2 = random.nextInt(MAX_WEIGHT)+1;
+                w3 = random.nextInt(MAX_WEIGHT)+1;
+                w4 = random.nextInt(MAX_WEIGHT)+1;
                 System.out.println("Heuristic 4 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic4(w1, w2, w3, w4);
 
             case 5:
-                w1 = random.nextInt(MAX_WEIGHT);
-                w2 = random.nextInt(MAX_WEIGHT);
-                w3 = random.nextInt(MAX_WEIGHT);
-                w4 = random.nextInt(MAX_WEIGHT);
+                w1 = random.nextInt(MAX_WEIGHT)+1;
+                w2 = random.nextInt(MAX_WEIGHT)+1;
+                w3 = random.nextInt(MAX_WEIGHT)+1;
+                w4 = random.nextInt(MAX_WEIGHT)+1;
                 System.out.println("Heuristic 5 w1, w2, w3 and w4: " + w1 + " " + w2 + " " + w3 + " " + w4);
 
                 return new Heuristic5(w1, w2, w3, w4);
