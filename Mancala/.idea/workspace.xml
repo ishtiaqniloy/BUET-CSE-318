@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c22d5fa-274f-44b2-a835-4c6bbfb4cd9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mancala/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java" afterDir="false" />
-    </list>
+    <list default="true" id="1c22d5fa-274f-44b2-a835-4c6bbfb4cd9b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,10 +11,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1479">
+            <state relative-caret-position="51">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -28,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
+            <state relative-caret-position="-1077">
+              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -100,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -148,7 +144,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549186673557" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549186863232" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/7 - Thread" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -171,7 +167,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainRandomAutoplay">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Mancala.Main" />
       <module name="Mancala" />
@@ -200,8 +196,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainRandomAutoplay" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainRandomAutoplay" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +214,7 @@
       <workItem from="1548877077604" duration="16474000" />
       <workItem from="1548962186842" duration="8743000" />
       <workItem from="1549024407851" duration="1893000" />
-      <workItem from="1549182217858" duration="4248000" />
+      <workItem from="1549182217858" duration="4510000" />
     </task>
     <task id="LOCAL-00001" summary="Heuristics and State functions written">
       <created>1548950277052</created>
@@ -262,15 +258,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549186044507</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Autoplay invert updated">
+      <created>1549186726565</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1549186726565</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31358000" />
+    <option name="totallyTimeSpent" value="31620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.17776097" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -281,7 +283,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6988543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5155483" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,7 +346,8 @@
     <MESSAGE value="pruning added. testing and experimentation required" />
     <MESSAGE value="Autoplay and Heuruistic5 added" />
     <MESSAGE value="Autoplay is made independent of which is given at first" />
-    <option name="LAST_COMMIT_MESSAGE" value="Autoplay is made independent of which is given at first" />
+    <MESSAGE value="Autoplay invert updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Autoplay invert updated" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Heuristics/Heuristic.java">
@@ -411,25 +414,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1479">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#437#468#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mancala/MainRandomAutoplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
+        <state relative-caret-position="-1077">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#409#440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mancala/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#437#468#0" expanded="true" />
           </folding>
         </state>
       </provider>
