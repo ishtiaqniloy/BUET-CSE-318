@@ -20,4 +20,7 @@ Constructive Heuristics:
 Improvement Heuristics:
 1. K-Opt Heuristic  
 
+## CSE_318_Mancala
+Playing Mancala with Adversarial Search  
+Specifications are given in "Assignment 4.pdf"
 
