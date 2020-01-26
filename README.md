@@ -14,7 +14,8 @@ Travelling Salesman Problem implemented using several constructive heuristics an
 Specifications are given in "tsp_tasks.pdf" and "tsp_tasks_mod.pdf"  
 Constructive Heuristics:  
 1. Nearest Neighbor Heuristic  
-2. Savings Heuristic
+2. Savings Heuristic  
+
 Improvement Heuristics:  
 1. K-Opt Heuristic  
 
